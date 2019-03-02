@@ -1,12 +1,13 @@
 DROP DATABASE IF EXISTS youGotThis_db;
 CREATE DATABASE youGotThis_db;
+use youGotThis_db;
 
 CREATE TABLE events (
     id INTEGER auto_Increment primary key,
     eventName VARCHAR(55) not Null,
     eventDate DATE not null,
     location VARCHAR(100),
-    score INT(10,2) DEFAULT null,
+    score INT(10) DEFAULT null,
     userID INT(10)
 );
 
