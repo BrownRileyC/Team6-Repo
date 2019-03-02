@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "process.env.localhost_PW",
     "database": "youGotThis_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "process.env.localhost_PW",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
