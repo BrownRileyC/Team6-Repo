@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Users = sequelize.define("Example", {
+    var Users = sequelize.define("Users", {
         userName: DataTypes.STRING,
         pWord: DataTypes.STRING,
         firstName: DataTypes.STRING,
@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Users.associate = function (models) {
-        models.Events.hasMany(models.Task, {
+        models.Users.hasMany(models.Events, {
             onDelete: "Cascade"
         });
     }

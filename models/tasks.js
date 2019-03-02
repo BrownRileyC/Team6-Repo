@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Tasks = sequelize.define("Example", {
+    var Tasks = sequelize.define("Tasks", {
       task: DataTypes.STRING
     });
 

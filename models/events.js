@@ -1,13 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
-    var Events = sequelize.define("Example", {
+    var Events = sequelize.define("Events", {
         eventName: DataTypes.STRING,
         eventDate: DataTypes.DATE,
         locationName: DataTypes.STRING,
         score: DataTypes.INTEGER
     });
-    
+
     Events.associate = function (models) {
-        models.events.belongsTo(models.Users, {
+        models.Events.belongsTo(models.Users, {
             onDelete: "CASCADE",
             foreignKey: {
                 allowNull: false
@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
     }
 
     Events.associate = function (models) {
-        models.Events.hasMany(models.Task, {
+        models.Events.hasMany(models.Tasks, {
             onDelete: "Cascade"
         });
     }
