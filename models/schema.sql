@@ -24,3 +24,4 @@ CREATE TABLE tasks (
     task VARCHAR(255) not null,
     eventID INT(10)
 )
+
