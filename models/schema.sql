@@ -6,7 +6,7 @@ CREATE TABLE events (
     id INTEGER auto_Increment primary key,
     eventName VARCHAR(55) not Null,
     eventDate DATE not null,
-    location VARCHAR(100),
+    locationName VARCHAR(100),
     score INT(10) DEFAULT null,
     userID INT(10)
 );
@@ -22,5 +22,6 @@ CREATE TABLE users (
 CREATE TABLE tasks (
     id INTEGER auto_Increment primary key,
     task VARCHAR(255) not null,
+    status BOOLEAN DEFAULT false,
     eventID INT(10)
 )

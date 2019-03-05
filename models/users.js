@@ -4,7 +4,11 @@ module.exports = function (sequelize, DataTypes) {
         pWord: DataTypes.STRING,
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING
-    });
+    },
+        {
+            // This is just here to make testing easier, the real database will need to have the createdat and updated at fields if we want them
+            timestamps: false
+        });
 
     Users.associate = function (models) {
         models.Users.hasMany(models.Events, {
