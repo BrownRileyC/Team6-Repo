@@ -17,12 +17,9 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         })
-    }
-
-    Events.associate = function (models) {
         models.Events.hasMany(models.Tasks, {
-            onDelete: "Cascade"
-        });
+                    onDelete: "Cascade"
+                });
     }
     return Events;
 };

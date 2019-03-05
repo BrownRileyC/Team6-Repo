@@ -9,12 +9,8 @@ module.exports = function(app) {
         userName: req.params.userName,
         pWord: req.params.password
     }}).then(function(dbUsers) {
-        // Not secure here,I'd like to find a way to exlude the userData when sending it back
-
-        // Possibilities:
-        // Create a new object and push over only the event data
-        // Make a second get request inside here if the request returns true
-      res.json(dbUsers);
+        // Still not sure on the security, but this redirects us to the event route with the userId rather than returning the user object
+      res.redirect("/api/events/"+dbUsers[0].dataValues.id);
     });
   });
 
