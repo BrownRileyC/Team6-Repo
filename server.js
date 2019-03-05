@@ -6,6 +6,7 @@ var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
+console.log(process.env.localhost_PW);
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -22,7 +23,9 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/apiRoutes")(app);
+require("./routes/usersRoutes")(app);
+require("./routes/eventsRoutes")(app);
+require("./routes/tasksRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
