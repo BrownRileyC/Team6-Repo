@@ -4,6 +4,10 @@ module.exports = function (sequelize, DataTypes) {
         eventDate: DataTypes.DATE,
         locationName: DataTypes.STRING,
         score: DataTypes.INTEGER
+    },
+    {
+        // This is just here to make testing easier, the real database will need to have the createdat and updated at fields if we want them
+        timestamps: false
     });
 
     Events.associate = function (models) {

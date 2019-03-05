@@ -1,6 +1,14 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Tasks = sequelize.define("Tasks", {
-      task: DataTypes.STRING
+        task: DataTypes.STRING,
+        status: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
+    },
+    {
+        // This is just here to make testing easier, the real database will need to have the createdat and updated at fields if we want them
+        timestamps: false
     });
 
     Tasks.associate = function (models) {
@@ -12,4 +20,4 @@ module.exports = function(sequelize, DataTypes) {
         })
     }
     return Tasks;
-  };
+};
