@@ -9,30 +9,67 @@
     <!-- local css -->
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/styles.css">
     <!-- semantic UI css -->
-    <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <!-- Boostrap  -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+    <!-- semantic UI JS -->
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- local JS -->
+    <script src="./js/index.js"></script>
 </head>
 
 <body>
     <!-- Nav bar  -->
-    <!-- Just an image -->
     <nav class="navbar navbar-light bg-transparent">
         <a class="navbar-brand" href="#">
-            <img src="./styles/img/ygt.png" width="90" height="90" alt="">
+            <button type="button" class="ui secondary basic button" id="loginBtn">Login</button>
         </a>
+        <h1>You Got This!</h1>
     </nav>
     <div class="ui dividing header"></div>
-    <div class="container-fluid">
 
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Login</h4>
+            </div>
+            <div>
+                <form id="login-form">
+                    <h4>Username</h4>
+                    <input type="text" id="username-input" size="20">
+                    <h4>Password</h4>
+                    <input type="text" id="pw-input" size="20">
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button id="login-submit" type="button" class="btn btn-default">Login</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
 
         <!-- user event feed (towards the right side of the page consistent) -->
 
 
 
-        <div class="ui inverted segment ui right visible sidebar">
+        <!-- <div class="ui inverted segment ui right visible sidebar">
             <div class="ui feed">
                 <div class="event">
                     <div class="label">
@@ -73,7 +110,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -165,28 +202,6 @@
             
         </div>
     </div>
-
-
-
-
-    <!-- semantic UI JS -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="../semantic/dist/semantic.js"></script>
-    <!-- Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-
-    <!-- local JS -->
-    <script src="./js/index.js"></script>
 </body>
 
 </html>
