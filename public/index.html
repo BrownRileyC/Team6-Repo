@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>You Got This!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- local css -->
-    <link rel="stylesheet" type="text/css" media="screen" href="./styles/styles.css">
     <!-- semantic UI css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <!-- Boostrap  -->
@@ -37,6 +35,7 @@
         </a>
         <h1>You Got This!</h1>
     </nav>
+
     <div class="ui dividing header"></div>
 
     <!-- Login Modal -->
@@ -65,53 +64,98 @@
         </div>
       </div>
 
-        <!-- user event feed (towards the right side of the page consistent) -->
+    <div class="ui basic segment">
+
+        <div class="ui dividing right internal attached rail">
+            <div class="ui inverted segment">
 
 
+                
+                <div class="ui vertical fluid text menu">
+                    <div class="ui feed">
+                        <div class="event">
+                            <div class="label">
+                                <i class="pencil icon" style="color: white;"></i>
+                            </div>
+                            <div class="content">
+                                <div class="summary" style="color: white;">
+                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
+                                    <div class="date" style="color: white;">Today</div>
+                                </div>
+                            </div>
+                        </div>
 
-        <!-- <div class="ui inverted segment ui right visible sidebar">
-            <div class="ui feed">
-                <div class="event">
-                    <div class="label">
-                        <i class="pencil icon" style="color: white;"></i>
                     </div>
-                    <div class="content">
-                        <div class="summary" style="color: white;">
-                            You posted on your friend <a>Stevie Feliciano's</a> wall.
-                            <div class="date" style="color: white;">Today</div>
+                    <div class="ui feed">
+                        <div class="event">
+                            <div class="label">
+                                <i class="pencil icon" style="color: white;"></i>
+                            </div>
+                            <div class="content">
+                                <div class="summary" style="color: white;">
+                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
+                                    <div class="date" style="color: white;">Today</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui feed">
+                        <div class="event">
+                            <div class="label">
+                                <i class="pencil icon" style="color: white;"></i>
+                            </div>
+                            <div class="content">
+                                <div class="summary" style="color: white;">
+                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
+                                    <div class="date" style="color: white;">Today</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui feed">
+                        <div class="event">
+                            <div class="label">
+                                <i class="pencil icon" style="color: white;"></i>
+                            </div>
+                            <div class="content">
+                                <div class="summary" style="color: white;">
+                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
+                                    <div class="date" style="color: white;">Today</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui feed">
+                        <div class="event">
+                            <div class="label">
+                                <i class="pencil icon" style="color: white;"></i>
+                            </div>
+                            <div class="content">
+                                <div class="summary" style="color: white;">
+                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
+                                    <div class="date" style="color: white;">Today</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui feed">
+                        <div class="event">
+                            <div class="label">
+                                <i class="pencil icon" style="color: white;"></i>
+                            </div>
+                            <div class="content">
+                                <div class="summary" style="color: white;">
+                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
+                                    <div class="date" style="color: white;">Today</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="ui feed">
-                <div class="event">
-                    <div class="label">
-                        <i class="recycle icon" style="color: white;"></i>
-                    </div>
-                    <div class="content">
-                        <div class="summary" style="color: white;">
-                            You posted on your friend <a>Stevie Feliciano's</a> wall.
-                            <div class="date" style="color: white;">Today</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ui feed">
-                <div class="event">
-                    <div class="label">
-                        <i class="zoom-out icon" style="color: white;"></i>
-                    </div>
-                    <div class="content">
-                        <div class="summary" style="color: white;">
-                            You posted on your friend <a>Stevie Feliciano's</a> wall.
-                            <div class="date" style="color: white;">Today</div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div> -->
-
 
 
     <!-- landing page -->
@@ -128,10 +172,8 @@
                 </div>
                 <div class="content">
                     <div class="header">Presentation Prep</div>
-                    <div class="ui teal button ">
-                        <i class="add icon"></i>
-                        Add Event
-                    </div>
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal"
+                        data-target="#presentation">Add Event</button>
 
                     <div class="description">
                         Have an upcoming presentation and you are already stressing out?
@@ -153,15 +195,14 @@
                 </div>
                 <div class="content">
                     <div class="header">Networking Event</div>
-                    <div class="ui teal button">
-                        <i class="add icon"></i>
-                        Add Event
-                    </div>
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#networking">Add
+                        Event</button>
 
                     <div class="description">
                         Looking to branch out for a new job or new friends? Networking events are great for gaining
                         social skills
-                        and practicing elevator pitches! If you're nervous don't sweat it, add this event and we'll go
+                        and practicing elevator pitches! If you're nervous don't sweat it, add this event and we'll
+                        go
                         step-by-step before your networking day.
                     </div>
                 </div>
@@ -179,10 +220,11 @@
                 </div>
                 <div class="content">
                     <div class="header">Interview time!</div>
-                    <div class="ui teal button">
-                        <i class="add icon"></i>
-                        Add Event
-                    </div>
+
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#interview">Add
+                        Event</button>
+
+
 
                     <div class="description">
                         Interviews are nerve wrecking for everyone, with us, we give you the best tips/tricks to
@@ -199,7 +241,179 @@
                     </span>
                 </div>
             </div>
-            
+            <div class="ui horizontal divider"></div>
+
+        </div>
+        <br>
+    </div>
+    <div class="jumbotron jumbotron-fluid bg-info">
+        <div class="container">
+            <h1 class="display-4 text-white">Upcoming Events <i class="calendar alternate outline icon"></i></h1>
+
+            <p class="lead text-white">This is a modified jumbotron that occupies the entire horizontal space of its
+                parent.
+            </p>
+        </div>
+    </div>
+
+
+
+    <!-- Modals for different events -->
+
+    <!-- presentation -->
+    <div class="modal fade" id="presentation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Presentation Coming up!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ui equal width form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Username</label>
+                                <input type="text" placeholder="Username">
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="password" autocomplete="off"
+                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="field">
+                                <label>First name</label>
+                                <input type="text" placeholder="First Name">
+                            </div>
+                            <div class="field">
+                                <label>Middle name</label>
+                                <input type="text" placeholder="Middle Name">
+                            </div>
+                            <div class="field">
+                                <label>Last name</label>
+                                <input type="text" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                    <div class="ui animated teal button" tabindex="0">
+                        <div class="visible content">Let's add the event!</div>
+                        <div class="hidden content">
+                            <i class="right arrow icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- networking -->
+    <div class="modal fade" id="networking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Networking Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ui equal width form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Username</label>
+                                <input type="text" placeholder="Username">
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="password" autocomplete="off"
+                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="field">
+                                <label>First name</label>
+                                <input type="text" placeholder="First Name">
+                            </div>
+                            <div class="field">
+                                <label>Middle name</label>
+                                <input type="text" placeholder="Middle Name">
+                            </div>
+                            <div class="field">
+                                <label>Last name</label>
+                                <input type="text" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                    <div class="ui animated teal button" tabindex="0">
+                        <div class="visible content">Let's add the event!</div>
+                        <div class="hidden content">
+                            <i class="right arrow icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- interview -->
+    <div class="modal fade" id="interview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Upcoming Interview</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ui equal width form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Username</label>
+                                <input type="text" placeholder="Username">
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="password" autocomplete="off"
+                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="field">
+                                <label>First name</label>
+                                <input type="text" placeholder="First Name">
+                            </div>
+                            <div class="field">
+                                <label>Middle name</label>
+                                <input type="text" placeholder="Middle Name">
+                            </div>
+                            <div class="field">
+                                <label>Last name</label>
+                                <input type="text" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                    <div class="ui animated teal button" tabindex="0">
+                        <div class="visible content">Let's add the event!</div>
+                        <div class="hidden content">
+                            <i class="right arrow icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
