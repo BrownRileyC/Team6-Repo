@@ -3,6 +3,7 @@ module.exports = function (sequelize, DataTypes) {
         eventName: DataTypes.STRING,
         eventDate: DataTypes.DATE,
         locationName: DataTypes.STRING,
+        eventType: DataTypes.STRING,
         score: DataTypes.INTEGER
     },
     {
