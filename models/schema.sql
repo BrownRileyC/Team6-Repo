@@ -7,6 +7,7 @@ CREATE TABLE events (
     eventName VARCHAR(55) not Null,
     eventDate DATE not null,
     locationName VARCHAR(100),
+    eventType VARCHAR(50), not NULL
     score INT(10) DEFAULT null,
     userID INT(10)
 );
