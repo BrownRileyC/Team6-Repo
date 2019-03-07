@@ -1,10 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
     var Events = sequelize.define("Events", {
         eventName: DataTypes.STRING,
-        eventDate: DataTypes.DATE,
+        eventDate: DataTypes.STRING,
         locationName: DataTypes.STRING,
         eventType: DataTypes.STRING,
-        score: DataTypes.INTEGER
+        score: {
+            type: DataTypes.INTEGER,
+            defaultValue: null
+        }
     },
     {
         // This is just here to make testing easier, the real database will need to have the createdat and updated at fields if we want them

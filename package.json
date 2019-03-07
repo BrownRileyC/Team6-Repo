@@ -2,7 +2,7 @@
   "name": "Team6-Repo",
   "version": "1.0.0",
   "description": "Project 2 Starter",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint **/*.js --quiet",
