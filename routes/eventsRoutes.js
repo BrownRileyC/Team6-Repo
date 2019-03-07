@@ -36,7 +36,6 @@ module.exports = function (app) {
       eventDate: req.body.eventDate,
       locationName: req.body.locationName,
       eventType: req.body.eventType,
-      score: req.body.score,
       UserId: req.body.userID
     }
       , {
@@ -48,7 +47,7 @@ module.exports = function (app) {
             { task: "Second Interview Task", EventId: dbEvents.dataValues.id },
             { task: "Third Interview Task", EventId: dbEvents.dataValues.id }
           ]).then(function (dbTasks) {
-            res.redirect("/api/events/"+req.body.userID);
+            res.redirect("/api/events/"+dbEvents.dataValues.id);
           });
         } else if (req.body.eventType === "Networking") {
           db.Tasks.bulkCreate([
@@ -56,7 +55,7 @@ module.exports = function (app) {
             { task: "Second Networking Task", EventId: dbEvents.dataValues.id },
             { task: "Third Networking Task", EventId: dbEvents.dataValues.id }
           ]).then(function (dbTasks) {
-            res.redirect("/api/events/"+req.body.userID);
+            res.redirect("/api/events/"+dbEvents.dataValues.id);
           });
         } else {
           db.Tasks.bulkCreate([
@@ -64,7 +63,7 @@ module.exports = function (app) {
             { task: "Second Presentation Task", EventId: dbEvents.dataValues.id },
             { task: "Third Presentation Task", EventId: dbEvents.dataValues.id }
           ]).then(function (dbTasks) {
-            res.redirect("/api/events/"+req.body.userID);
+            res.redirect("/api/events/"+dbEvents.dataValues.id);
           });
         }
       });

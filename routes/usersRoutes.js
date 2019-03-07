@@ -10,7 +10,7 @@ module.exports = function(app) {
         pWord: req.params.password
     }}).then(function(dbUsers) {
         // Still not sure on the security, but this redirects us to the event route with the userId rather than returning the user object
-      res.redirect("/api/events/"+dbUsers[0].dataValues.id);
+      res.json(dbUsers[0].dataValues.id);
     });
   });
 
@@ -22,7 +22,8 @@ module.exports = function(app) {
         firstName: req.body.firstName,
         lastName: req.body.lastName
     }).then(function(dbUsers) {
-      res.json(dbUsers);
+      console.log(dbUsers)
+      res.json(dbUsers.id);
     });
   });
 };
