@@ -18,8 +18,20 @@ $(document).ready(function(){
       console.log(data);
       
     });
-  })
+  });
 
+  $(".ui.animated.teal.button").on("click",function(){
+    window.location.href="./event.html";
+    return false;
+  });
+
+  $("#backToHome").on("click",function(){
+    window.location.href="./index.html";
+    return false;
+  });
+
+  $('.four.wide.column.ui.checkbox').checkbox();
 
 });
+
 

@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <!-- Boostrap  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    
+
     <!-- semantic UI JS -->
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -31,38 +31,65 @@
     <!-- Nav bar  -->
     <nav class="navbar navbar-light bg-transparent">
         <a class="navbar-brand" href="#">
-            <button type="button" class="ui secondary basic button" id="loginBtn">Login</button>
+            <button type="button" class="ui inverted secondary button" id="loginBtn">Login</button>
         </a>
-        <h1>You Got This!</h1>
+        <h1 class="text center">You Got This!</h1>
     </nav>
 
     <div class="ui dividing header"></div>
 
     <!-- Login Modal -->
-    <div class="modal fade" id="loginModal" role="dialog">
-        <div class="modal-dialog">
-        
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Login</h4>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ui equal width form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Username</label>
+                                <input type="text" placeholder="Username">
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="password" autocomplete="off"
+                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="field">
+                                <label>First name</label>
+                                <input type="text" placeholder="First Name">
+                            </div>
+                            <div class="field">
+                                <label>Middle name</label>
+                                <input type="text" placeholder="Middle Name">
+                            </div>
+                            <div class="field">
+                                <label>Last name</label>
+                                <input type="text" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                    <div class="ui vertical animated button" tabindex="0">
+                            <div class="hidden content">Login in</a></div>
+                            <div class="visible content">
+                              <i class="thumbs up outline icon"></i>
+                            </div>
+                          </div>
+                </div>
             </div>
-            <div>
-                <form id="login-form">
-                    <h4>Username</h4>
-                    <input type="text" id="username-input" size="20">
-                    <h4>Password</h4>
-                    <input type="text" id="pw-input" size="20">
-                </form>
-            </div>
-            <div class="modal-footer">
-              <button id="login-submit" type="button" class="btn btn-default">Login</button>
-            </div>
-          </div>
-          
         </div>
-      </div>
+    </div>
 
     <div class="ui basic segment">
 
@@ -70,7 +97,7 @@
             <div class="ui inverted segment">
 
 
-                
+
                 <div class="ui vertical fluid text menu">
                     <div class="ui feed">
                         <div class="event">
@@ -155,7 +182,7 @@
 
             </div>
         </div>
-    </div> -->
+    </div>
 
 
     <!-- landing page -->
