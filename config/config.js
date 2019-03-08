@@ -1,3 +1,5 @@
+var JAWSDB_URL = process.env.JAWSDB_URL ? JAWSDB_URL: "";
+
 module.exports = {
     development: {
       username: "root",

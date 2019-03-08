@@ -9,6 +9,7 @@ var config = require(__dirname + "/../config/config.js")[env];
 var db = {};
 
 if (config.use_env_variable) {
+  console.log('Trying to use env.Jaws_DB')
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
   var sequelize = new Sequelize(
