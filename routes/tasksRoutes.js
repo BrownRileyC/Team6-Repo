@@ -11,7 +11,7 @@ module.exports = function (app) {
         EventId: req.body.EventId
       }
       }).then(function () {
-        res.redirect("/api/events/"+req.body.EventId);
+        res.redirect("/api/events/single"+req.body.EventId);
       });
   });
 
