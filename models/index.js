@@ -1,4 +1,5 @@
 "use strict";
+var JAWSDB_URL = process.env.JAWSDB ? JAWSDB_URL: "";
 
 var fs = require("fs");
 var path = require("path");
