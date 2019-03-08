@@ -76,7 +76,9 @@ $(document).ready(function () {
     return false;
   });
 
-  $('.four.wide.column.ui.checkbox').checkbox();
+  
+
+
 
 });
 

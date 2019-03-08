@@ -5,7 +5,7 @@ use youGotThis_db;
 CREATE TABLE events (
     id INTEGER auto_Increment primary key,
     eventName VARCHAR(55) not Null,
-    eventDate DATE not null,
+    eventDate VARCHAR(55) not null,
     locationName VARCHAR(100),
     eventType VARCHAR(50), not NULL
     score INT(10) DEFAULT null,
