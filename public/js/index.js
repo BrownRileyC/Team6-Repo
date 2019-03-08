@@ -36,13 +36,29 @@ $(document).ready(function () {
     var userName = $("#username-input").val().trim();
     var password = $("#pw-input").val().trim();
 
-    console.log("calling get users api");
+
 
     $.get("/api/users/" + userName + "/" + password, function (data) {
       localStorage.setItem("userID", JSON.stringify(data));
-      // log the data to our console
-      console.log(data);
-      // Add a get route here to grab all their event data and create the cards for each at the bottom
+      
+      // get all events for the user
+      $.get("/api/events/" + localStorage.getItem("userID"), function(data) {
+        console.log(data);
+
+        for (var i=0; i<data.length; i++) {
+          var itemDiv = $("<div class=\"item\">");
+          var listItemDiv = $("<div class=\"content\">");
+          itemDiv.append(listItemDiv);
+          var headerItemDiv = $("<div class=\"header\">");
+          headerItemDiv.text(data[i].eventName);
+          listItemDiv.append(headerItemDiv);
+          var descriptionItemDiv = $("<div class=\"description\">");
+          descriptionItemDiv.text(data[i].eventDate);
+          $("#event-list").append(itemDiv);
+        }
+
+
+      });
     });
   });
 
