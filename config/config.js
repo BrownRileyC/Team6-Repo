@@ -1,4 +1,4 @@
-var JAWSDB_URL = process.env.JAWSDB_URL ? JAWSDB_URL: "";
+var JAWSDB_URL = process.env.JAWSDB ? JAWSDB_URL: "";
 
 module.exports = {
     development: {
