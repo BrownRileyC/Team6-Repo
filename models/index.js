@@ -1,4 +1,5 @@
 "use strict";
+var JAWSDB_URL = process.env.JAWSDB ? JAWSDB_URL: "";
 
 var fs = require("fs");
 var path = require("path");
@@ -8,7 +9,11 @@ var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.js")[env];
 var db = {};
 
+console.log(config);
+console.log(config.use_env_variable);
+
 if (config.use_env_variable) {
+  console.log('Trying to use env.Jaws_DB')
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
   var sequelize = new Sequelize(
