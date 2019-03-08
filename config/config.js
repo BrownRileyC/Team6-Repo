@@ -1,5 +1,3 @@
-var JAWSDB_URL = process.env.JAWSDB_URL;
-
 module.exports = {
     development: {
       username: "root",
@@ -17,7 +15,7 @@ module.exports = {
       logging: false
     },
     production: {
-      use_env_variable: JAWSDB_URL,
+      use_env_variable: process.env.JAWSDB_URL,
       dialect: "mysql"
     }
   }
