@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function (app) {
   // Get all examples
-  app.get("/api/events/:eventID", function (req, res) {
+  app.get("/api/events/single/:eventID", function (req, res) {
     db.Events.findAll({
       include: [db.Tasks],
       where: {
@@ -20,6 +20,7 @@ module.exports = function (app) {
         userID: req.params.userID
       }
     }).then(function (dbEvents) {
+      console.log(dbEvents);
       res.json(dbEvents);
     });
   });
@@ -47,7 +48,7 @@ module.exports = function (app) {
             { task: "Second Interview Task", EventId: dbEvents.dataValues.id },
             { task: "Third Interview Task", EventId: dbEvents.dataValues.id }
           ]).then(function (dbTasks) {
-            res.redirect("/api/events/"+dbEvents.dataValues.id);
+            res.redirect("/api/events/single"+dbEvents.dataValues.id);
           });
         } else if (req.body.eventType === "Networking") {
           db.Tasks.bulkCreate([
@@ -55,7 +56,7 @@ module.exports = function (app) {
             { task: "Second Networking Task", EventId: dbEvents.dataValues.id },
             { task: "Third Networking Task", EventId: dbEvents.dataValues.id }
           ]).then(function (dbTasks) {
-            res.redirect("/api/events/"+dbEvents.dataValues.id);
+            res.redirect("/api/events/single"+dbEvents.dataValues.id);
           });
         } else {
           db.Tasks.bulkCreate([
@@ -63,7 +64,7 @@ module.exports = function (app) {
             { task: "Second Presentation Task", EventId: dbEvents.dataValues.id },
             { task: "Third Presentation Task", EventId: dbEvents.dataValues.id }
           ]).then(function (dbTasks) {
-            res.redirect("/api/events/"+dbEvents.dataValues.id);
+            res.redirect("/api/events/single"+dbEvents.dataValues.id);
           });
         }
       });
