@@ -8,9 +8,11 @@ var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.js")[env];
 var db = {};
 
-if (config.use_env_variable) {
+console.log(config.production.use_env_variable);
+
+if (config.production.use_env_variable) {
   console.log('Trying to use env.Jaws_DB')
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  var sequelize = new Sequelize(process.env[config.production.use_env_variable]);
 } else {
   var sequelize = new Sequelize(
     config.database,
