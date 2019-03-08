@@ -20,6 +20,7 @@ module.exports = function (app) {
         userID: req.params.userID
       }
     }).then(function (dbEvents) {
+      console.log(dbEvents);
       res.json(dbEvents);
     });
   });
