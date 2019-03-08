@@ -8,7 +8,8 @@ var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.js")[env];
 var db = {};
 
-console.log(config.production.use_env_variable);
+console.log(config);
+console.log(config.use_env_variable);
 
 if (config.production.use_env_variable) {
   console.log('Trying to use env.Jaws_DB')
