@@ -1,14 +1,69 @@
 $(document).ready(function () {
+
+  //on page load, check if there is user in local storage and get events
+  if (localStorage.getItem("userID")) {
+    displayEvents("upcoming");
+  }
+
+  // function to get and display events
+  function displayEvents(dateContext) {
+    $.get("/api/events/" + dateContext + "/" + localStorage.getItem("userID"), function(data) {
+
+      $("#event-list").empty();
+
+      console.log(data);
+
+      if (data && data.length) {
+        for (var i=0; i<data.length; i++) {
+          var itemDiv = $("<div class=\"item\">");
+          var listItemDiv = $("<div class=\"content\">");
+          itemDiv.append(listItemDiv);
+          var headerItemDiv = $("<a class=\"header\" href=\"#\">");
+          headerItemDiv.text(data[i].eventName);
+          listItemDiv.append(headerItemDiv);
+          var descriptionItemDiv = $("<div class=\"description\">");
+          descriptionItemDiv.text(data[i].eventDate);
+          listItemDiv.append(descriptionItemDiv);
+          $("#event-list").append(itemDiv);
+        }
+      }
+      else {
+        var noEventsDiv = $("<div class=\"description\">");
+        if (dateContext==="upcoming") {
+          noEventsDiv.text("No Upcoming Events");
+        }
+        else {
+          noEventsDiv.text("No Past Events");
+        }
+        $("#event-list").append(noEventsDiv);
+      }
+
+
+    });
+  } 
+
+  // on click for events data toggles
+  $(".toggle-button").click(function() {
+    $(".toggle-button").removeClass("active");
+    $(this).addClass("active");
+    var dateContext = $(this).attr("data-tab");
+    displayEvents(dateContext);
+  })
+
+  // on click for login button
   $("#loginBtn").click(function () {
     $("#loginModal").modal();
   });
 
+  // on click for signup button
   $("#signupBtn").click(function () {
     $("#signupModal").modal();
   });
 
+
   $("#signup-submit").on("click", function (event) {
     event.preventDefault();
+    $("#signupModal").modal('hide');
 
     var newUser = {
       userName: $("#new-username-input").val().trim(),
@@ -32,33 +87,14 @@ $(document).ready(function () {
 
   $("#login-submit").on("click", function (event) {
     event.preventDefault();
+    $("#loginModal").modal('hide');
 
     var userName = $("#username-input").val().trim();
     var password = $("#pw-input").val().trim();
 
-
-
     $.get("/api/users/" + userName + "/" + password, function (data) {
       localStorage.setItem("userID", JSON.stringify(data));
-      
-      // get all events for the user
-      $.get("/api/events/" + localStorage.getItem("userID"), function(data) {
-        console.log(data);
-
-        for (var i=0; i<data.length; i++) {
-          var itemDiv = $("<div class=\"item\">");
-          var listItemDiv = $("<div class=\"content\">");
-          itemDiv.append(listItemDiv);
-          var headerItemDiv = $("<div class=\"header\">");
-          headerItemDiv.text(data[i].eventName);
-          listItemDiv.append(headerItemDiv);
-          var descriptionItemDiv = $("<div class=\"description\">");
-          descriptionItemDiv.text(data[i].eventDate);
-          $("#event-list").append(itemDiv);
-        }
-
-
-      });
+      displayEvents("upcoming");
     });
   });
 
@@ -90,6 +126,10 @@ $(document).ready(function () {
   $("#backToHome").on("click", function () {
     window.location.href = "./index.html";
     return false;
+  });
+
+  $("#logout").on("click", function() {
+    localStorage.clear();
   });
 
   

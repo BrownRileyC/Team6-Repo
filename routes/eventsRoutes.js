@@ -1,6 +1,14 @@
 var db = require("../models");
 
 module.exports = function (app) {
+
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+
   // Get all examples
   app.get("/api/events/single/:eventID", function (req, res) {
     db.Events.findAll({
@@ -21,6 +29,36 @@ module.exports = function (app) {
       }
     }).then(function (dbEvents) {
       console.log(dbEvents);
+      res.json(dbEvents);
+    });
+  });
+
+  app.get("/api/events/upcoming/:userID", function (req, res) {
+    console.log(today);
+    db.Events.findAll({
+      include: [db.Tasks],
+      where: {
+        userID: req.params.userID,
+        eventDate: {
+          $gte: today
+        }
+      }
+    }).then(function (dbEvents) {
+      res.json(dbEvents);
+    });
+  });
+
+  app.get("/api/events/past/:userID", function (req, res) {
+    console.log(today);
+    db.Events.findAll({
+      include: [db.Tasks],
+      where: {
+        userID: req.params.userID,
+        eventDate: {
+          $lt: today
+        }
+      }
+    }).then(function (dbEvents) {
       res.json(dbEvents);
     });
   });

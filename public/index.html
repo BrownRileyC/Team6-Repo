@@ -38,6 +38,8 @@
         <a class="navbar-brand" href="#">
             <button type="button" class="ui inverted secondary button" id="signupBtn">Sign up</button>
         </a>
+
+        <a class="navbar-brand" id="logout" href="#">Logout</a>
     </nav>
     <h1 class="text-center">You Got This!</h1>
 
@@ -130,18 +132,17 @@
         </div>
     </div>
 
+    <!--right panel for events-->
     <div class="ui basic segment">
-
         <div class="ui dividing right internal attached rail">
             <div class="ui attached segment">
-                <h2 class="ui header">Upcoming Events</h2>
-                <div class="ui dividing header"></div>
+                <div class="ui header text-center">My Events</div>
+                <div class="ui two item stackable tabs menu">
+                    <a class="toggle-button item active" data-tab="upcoming">Upcoming</a>
+                    <a class="toggle-button item" data-tab="past">Past</a>
+                </div>
                 <div class="ui vertical fluid text menu">
-
-                        <div id="event-list" class="ui list">
-
-                        </div>
-                    
+                    <div id="event-list" class="ui list"></div>
                 </div>
             </div>
         </div>
