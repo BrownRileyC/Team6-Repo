@@ -1,4 +1,38 @@
 $(document).ready(function () {
+
+  //on page load, check if there is user in local storage and get events
+  if (localStorage.getItem("userID")) {
+    displayEvents("upcoming");
+  }
+
+  // function to get and display events
+  function displayEvents(dateContext) {
+    $.get("/api/events/" + dateContext + "/" + localStorage.getItem("userID"), function(data) {
+
+      $("#event-list").empty();
+
+      for (var i=0; i<data.length; i++) {
+        var itemDiv = $("<div class=\"item\">");
+        var listItemDiv = $("<div class=\"content\">");
+        itemDiv.append(listItemDiv);
+        var headerItemDiv = $("<div class=\"header\">");
+        headerItemDiv.text(data[i].eventName);
+        listItemDiv.append(headerItemDiv);
+        var descriptionItemDiv = $("<div class=\"description\">");
+        descriptionItemDiv.text(data[i].eventDate);
+        $("#event-list").append(itemDiv);
+      }
+    });
+  } 
+
+  // on click for events data toggles
+  $(".toggle-button").click(function() {
+    $(".toggle-button").removeClass("active");
+    $(this).addClass("active");
+    var dateContext = $(this).attr("data-tab");
+    displayEvents(dateContext);
+  })
+
   $("#loginBtn").click(function () {
     $("#loginModal").modal();
   });
@@ -42,23 +76,25 @@ $(document).ready(function () {
       localStorage.setItem("userID", JSON.stringify(data));
       
       // get all events for the user
-      $.get("/api/events/" + localStorage.getItem("userID"), function(data) {
-        console.log(data);
+      // $.get("/api/events/" + localStorage.getItem("userID"), function(data) {
+      //   console.log(data);
 
-        for (var i=0; i<data.length; i++) {
-          var itemDiv = $("<div class=\"item\">");
-          var listItemDiv = $("<div class=\"content\">");
-          itemDiv.append(listItemDiv);
-          var headerItemDiv = $("<div class=\"header\">");
-          headerItemDiv.text(data[i].eventName);
-          listItemDiv.append(headerItemDiv);
-          var descriptionItemDiv = $("<div class=\"description\">");
-          descriptionItemDiv.text(data[i].eventDate);
-          $("#event-list").append(itemDiv);
-        }
+      //   var eventsDisplay = $(this).attr("data-state")
+
+      //   for (var i=0; i<data.length; i++) {
+      //     var itemDiv = $("<div class=\"item\">");
+      //     var listItemDiv = $("<div class=\"content\">");
+      //     itemDiv.append(listItemDiv);
+      //     var headerItemDiv = $("<div class=\"header\">");
+      //     headerItemDiv.text(data[i].eventName);
+      //     listItemDiv.append(headerItemDiv);
+      //     var descriptionItemDiv = $("<div class=\"description\">");
+      //     descriptionItemDiv.text(data[i].eventDate);
+      //     $("#event-list").append(itemDiv);
+      //   }
 
 
-      });
+      // });
     });
   });
 
