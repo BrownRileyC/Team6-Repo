@@ -15,11 +15,12 @@ $(document).ready(function () {
         var itemDiv = $("<div class=\"item\">");
         var listItemDiv = $("<div class=\"content\">");
         itemDiv.append(listItemDiv);
-        var headerItemDiv = $("<div class=\"header\">");
+        var headerItemDiv = $("<a class=\"header\" href=\"#\">");
         headerItemDiv.text(data[i].eventName);
         listItemDiv.append(headerItemDiv);
         var descriptionItemDiv = $("<div class=\"description\">");
         descriptionItemDiv.text(data[i].eventDate);
+        listItemDiv.append(descriptionItemDiv);
         $("#event-list").append(itemDiv);
       }
     });
@@ -33,14 +34,17 @@ $(document).ready(function () {
     displayEvents(dateContext);
   })
 
+  // on click for login button
   $("#loginBtn").click(function () {
     $("#loginModal").modal();
   });
 
+  // on click for signup button
   $("#signupBtn").click(function () {
     $("#signupModal").modal();
   });
 
+  
   $("#signup-submit").on("click", function (event) {
     event.preventDefault();
 
@@ -66,35 +70,14 @@ $(document).ready(function () {
 
   $("#login-submit").on("click", function (event) {
     event.preventDefault();
+    $("#loginModal").modal('hide');
 
     var userName = $("#username-input").val().trim();
     var password = $("#pw-input").val().trim();
 
-
-
     $.get("/api/users/" + userName + "/" + password, function (data) {
       localStorage.setItem("userID", JSON.stringify(data));
-      
-      // get all events for the user
-      // $.get("/api/events/" + localStorage.getItem("userID"), function(data) {
-      //   console.log(data);
-
-      //   var eventsDisplay = $(this).attr("data-state")
-
-      //   for (var i=0; i<data.length; i++) {
-      //     var itemDiv = $("<div class=\"item\">");
-      //     var listItemDiv = $("<div class=\"content\">");
-      //     itemDiv.append(listItemDiv);
-      //     var headerItemDiv = $("<div class=\"header\">");
-      //     headerItemDiv.text(data[i].eventName);
-      //     listItemDiv.append(headerItemDiv);
-      //     var descriptionItemDiv = $("<div class=\"description\">");
-      //     descriptionItemDiv.text(data[i].eventDate);
-      //     $("#event-list").append(itemDiv);
-      //   }
-
-
-      // });
+      displayEvents("upcoming");
     });
   });
 
@@ -126,6 +109,10 @@ $(document).ready(function () {
   $("#backToHome").on("click", function () {
     window.location.href = "./index.html";
     return false;
+  });
+
+  $("#logout").on("click", function() {
+    localStorage.clear();
   });
 
   
