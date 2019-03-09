@@ -11,18 +11,34 @@ $(document).ready(function () {
 
       $("#event-list").empty();
 
-      for (var i=0; i<data.length; i++) {
-        var itemDiv = $("<div class=\"item\">");
-        var listItemDiv = $("<div class=\"content\">");
-        itemDiv.append(listItemDiv);
-        var headerItemDiv = $("<a class=\"header\" href=\"#\">");
-        headerItemDiv.text(data[i].eventName);
-        listItemDiv.append(headerItemDiv);
-        var descriptionItemDiv = $("<div class=\"description\">");
-        descriptionItemDiv.text(data[i].eventDate);
-        listItemDiv.append(descriptionItemDiv);
-        $("#event-list").append(itemDiv);
+      console.log(data);
+
+      if (data && data.length) {
+        for (var i=0; i<data.length; i++) {
+          var itemDiv = $("<div class=\"item\">");
+          var listItemDiv = $("<div class=\"content\">");
+          itemDiv.append(listItemDiv);
+          var headerItemDiv = $("<a class=\"header\" href=\"#\">");
+          headerItemDiv.text(data[i].eventName);
+          listItemDiv.append(headerItemDiv);
+          var descriptionItemDiv = $("<div class=\"description\">");
+          descriptionItemDiv.text(data[i].eventDate);
+          listItemDiv.append(descriptionItemDiv);
+          $("#event-list").append(itemDiv);
+        }
       }
+      else {
+        var noEventsDiv = $("<div class=\"description\">");
+        if (dateContext==="upcoming") {
+          noEventsDiv.text("No Upcoming Events");
+        }
+        else {
+          noEventsDiv.text("No Past Events");
+        }
+        $("#event-list").append(noEventsDiv);
+      }
+
+
     });
   } 
 
@@ -44,9 +60,10 @@ $(document).ready(function () {
     $("#signupModal").modal();
   });
 
-  
+
   $("#signup-submit").on("click", function (event) {
     event.preventDefault();
+    $("#signupModal").modal('hide');
 
     var newUser = {
       userName: $("#new-username-input").val().trim(),
