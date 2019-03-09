@@ -3,6 +3,8 @@ $(document).ready(function () {
   //on page load, check if there is user in local storage and get events
   if (localStorage.getItem("userID")) {
     displayEvents("upcoming");
+    var logoutDiv = $("<a id=\"logout\" href=\"#\">Logout</a>")
+    $(".navbar").append(logoutDiv);
   }
 
   // function to get and display events
@@ -71,18 +73,12 @@ $(document).ready(function () {
       firstName: $("#firstName").val().trim(),
       lastName: $("#lastName").val().trim()
     };
-    console.log("calling post users api");
 
     $.post("/api/users", newUser, function (data) {
-
-      console.log("post request went through");
-      
-      localStorage.setItem("userID", JSON.stringify(data));
-
-      
-      // log the data to our console
-      console.log(data);
+      localStorage.setItem("userID", data.userID);
+      location.reload();
     });
+
   });
 
   $("#login-submit").on("click", function (event) {
@@ -94,8 +90,10 @@ $(document).ready(function () {
 
     $.get("/api/users/" + userName + "/" + password, function (data) {
       localStorage.setItem("userID", JSON.stringify(data));
-      displayEvents("upcoming");
+      // displayEvents("upcoming");
     });
+    // refresh the page
+    location.reload();
   });
 
   $(".ui.animated.teal.button").on("click", function () {
@@ -130,6 +128,7 @@ $(document).ready(function () {
 
   $("#logout").on("click", function() {
     localStorage.clear();
+    location.reload();
   });
 
   
