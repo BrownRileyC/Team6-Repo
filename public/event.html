@@ -79,7 +79,7 @@
                 </div>
             </div>
         </div>
-        
+
         <br>
 
         <div class="row">
@@ -96,7 +96,7 @@
                 </div>
             </div>
         </div>
-        
+
         <br>
         <div class="row">
 
@@ -134,7 +134,7 @@
                 </div>
             </div>
         </div>
-        
+
         <br>
 
         <div class="row">
@@ -173,7 +173,7 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
     <div class="ui hidden section divider"></div>
 
@@ -181,7 +181,7 @@
 
     <!--  during (event) tips/suggestions  -->
     <div class="ui horizontal divider">
-        <i class="large arrow down icon"></i> Here are things to rememeber
+        <i class="large arrow down icon"></i> Here are things to remember
     </div>
     <div class="ui placeholder segment">
         <div class="ui two column very relaxed stackable grid">
@@ -205,7 +205,7 @@
                         </li>
                         <li>Deleting Your Account</li>
                     </ol>
-                    <div class="ui teal labeled icon button" tableindex="0">
+                    <div class="ui teal labeled icon button" id="surveyBtn" tableindex="0">
                         Reflection
                         <i class="edit outline icon"></i>
                     </div>
@@ -217,6 +217,87 @@
         </div>
     </div>
 
+    <div class="modal fade" id="surveyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">How'd You Do?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="surveyQuestion1">How well prepared did you feel for the event?</label>
+                            <select class="form-control" id="surveyQuestion1">
+                                <option></option>
+                                <option>1 (Completely unprepared)</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5 (On top of everything)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="surveyQuestion2">How anxious were you before the event?</label>
+                            <select class="form-control" id="surveyQuestion2">
+                                <option></option>
+                                <option>1 (Totally panicked)</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5 (Cool as a cucumber)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="surveyQuestion3">How do you feel the event went?</label>
+                            <select class="form-control" id="surveyQuestion3">
+                                <option></option>
+                                <option>1 (Horrible)</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5 (Fantastic)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="surveyQuestion4">How ready are you to try again?</label>
+                            <select class="form-control" id="surveyQuestion4">
+                                <option></option>
+                                <option>1 (Completely unprepared)</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5 (I could go again right now)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="surveyQuestion5">Another question I cannot think of right now</label>
+                            <select class="form-control" id="surveyQuestion5">
+                                <option></option>
+                                <option>1 (Completely unprepared)</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5 (I could go again right now)</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                    <div id="survey-submit" class="ui vertical animated button" tabindex="0">
+                        <div class="hidden content">Login in</a></div>
+                        <div class="visible content">
+                            <i class="thumbs up outline icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
