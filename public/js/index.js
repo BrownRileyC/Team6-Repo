@@ -3,8 +3,10 @@ $(document).ready(function () {
   //on page load, check if there is user in local storage and get events
   if (localStorage.getItem("userID")) {
     displayEvents("upcoming");
+
     var logoutDiv = $("<a id=\"logout\" href=\"#\">Logout</a>")
     $(".navbar").append(logoutDiv);
+
   }
 
   // function to get and display events
@@ -90,7 +92,9 @@ $(document).ready(function () {
 
     $.get("/api/users/" + userName + "/" + password, function (data) {
       localStorage.setItem("userID", JSON.stringify(data));
+
       // displayEvents("upcoming");
+
     });
     // refresh the page
     location.reload();
@@ -128,7 +132,9 @@ $(document).ready(function () {
 
   $("#logout").on("click", function() {
     localStorage.clear();
+
     location.reload();
+
   });
 
   
