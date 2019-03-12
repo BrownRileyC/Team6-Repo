@@ -22,10 +22,13 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/usersRoutes")(app);
-require("./routes/eventsRoutes")(app);
-require("./routes/tasksRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// require("./routes/usersRoutes")(app);
+// require("./routes/eventsRoutes")(app);
+// require("./routes/tasksRoutes")(app);
+var routes = require("./routes/htmlRoutes");
+// var routes = require("./routes/apiRoutes");
+
+app.use(routes);
 
 var syncOptions = { force: false };
 

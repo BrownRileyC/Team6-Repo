@@ -7,112 +7,167 @@
     <title>You Got This!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- semantic UI css -->
-    <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <!-- Boostrap  -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- local css -->
-    <link rel="stylesheet" type="text/css" media="screen" href="./styles/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
+    <!-- semantic UI JS -->
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- local JS -->
+    <script src="./js/index.js"></script>
 </head>
 
 <body>
     <!-- Nav bar  -->
-    <!-- Just an image -->
-    <nav class="navbar navbar-light bg-transparent">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+
         <a class="navbar-brand" href="#">
-            <img src="./styles/img/ygt.png" width="90" height="90" alt="">
+            <button type="button" class="ui inverted secondary button" id="loginBtn">Login</button>
         </a>
+
+        <a class="navbar-brand" href="#">
+            <button type="button" class="ui inverted secondary button" id="signupBtn">Sign up</button>
+        </a>
+
+        
+        
+
     </nav>
-    <!-- user event feed (towards the right side of the page consistent) -->
 
-    <div class="ui basic segment">
+    <div>
+        <h1 class="text-center">You Got This!</h1>
+    </div>
+    
+    <!-- <div class="text-right" id="logged-in">
+        Welcome "user" | <a class="navbar-brand" id="logout" href="#">Logout</a>
+    </div> -->
 
-        <div class="ui dividing right internal attached rail">
-            <div class="ui inverted segment">
 
-                Right Rail Content
-                <div class="ui vertical fluid text menu">
-                    <div class="ui feed">
-                        <div class="event">
-                            <div class="label">
-                                <i class="pencil icon" style="color: white;"></i>
+    <div class="ui dividing header"></div>
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ui equal width form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Username</label>
+                                <input type="text" id="new-username-input" placeholder="Username">
                             </div>
-                            <div class="content">
-                                <div class="summary" style="color: white;">
-                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
-                                    <div class="date" style="color: white;">Today</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui feed">
-                        <div class="event">
-                            <div class="label">
-                                <i class="pencil icon" style="color: white;"></i>
-                            </div>
-                            <div class="content">
-                                <div class="summary" style="color: white;">
-                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
-                                    <div class="date" style="color: white;">Today</div>
-                                </div>
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="password" id="new-pw-input" autocomplete="off"
+                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
                             </div>
                         </div>
-                    </div>
-                    <div class="ui feed">
-                        <div class="event">
-                            <div class="label">
-                                <i class="pencil icon" style="color: white;"></i>
+                        <div class="fields">
+                            <div class="field">
+                                <label>First name</label>
+                                <input type="text" id="firstName" placeholder="First Name">
                             </div>
-                            <div class="content">
-                                <div class="summary" style="color: white;">
-                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
-                                    <div class="date" style="color: white;">Today</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui feed">
-                        <div class="event">
-                            <div class="label">
-                                <i class="pencil icon" style="color: white;"></i>
-                            </div>
-                            <div class="content">
-                                <div class="summary" style="color: white;">
-                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
-                                    <div class="date" style="color: white;">Today</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui feed">
-                        <div class="event">
-                            <div class="label">
-                                <i class="pencil icon" style="color: white;"></i>
-                            </div>
-                            <div class="content">
-                                <div class="summary" style="color: white;">
-                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
-                                    <div class="date" style="color: white;">Today</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui feed">
-                        <div class="event">
-                            <div class="label">
-                                <i class="pencil icon" style="color: white;"></i>
-                            </div>
-                            <div class="content">
-                                <div class="summary" style="color: white;">
-                                    You posted on your friend <a>Stevie Feliciano's</a> wall.
-                                    <div class="date" style="color: white;">Today</div>
-                                </div>
+                            <div class="field">
+                                <label>Last name</label>
+                                <input type="text" id="lastName" placeholder="Last Name">
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                    <div id="signup-submit" class="ui vertical animated button" tabindex="0">
+                        <div class="hidden content">Login in</a></div>
+                        <div class="visible content">
+                            <i class="thumbs up outline icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ui equal width form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Username</label>
+                                <input type="text" id="username-input" placeholder="Username">
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="password" id="pw-input" autocomplete="off"
+                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                    <div id="login-submit" class="ui vertical animated button" tabindex="0">
+                        <div class="hidden content">Login in</a></div>
+                        <div class="visible content">
+                            <i class="thumbs up outline icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!--right panel for events-->
+    <div class="ui basic segment">
+        <div class="ui dividing right internal attached rail">
+            <div class="ui attached segment">
+                <div class="ui header text-center">My Events</div>
+                <div class="ui two item stackable tabs menu">
+                    <a class="toggle-button item active" data-tab="upcoming">Upcoming</a>
+                    <a class="toggle-button item" data-tab="past">Past</a>
+                </div>
+                <div class="ui vertical fluid text menu">
+                    <div id="event-list" class="ui list">
+                        <div class="container">
+                            <div class="jumbotron mt-4">
+                                {{#each Object}}
+                                    <div class="item">
+                                        <div class="content">
+                                            <a class="header" href="#">{{this.dataValues.eventName}}</a>
+                                            <div class="description">
+                                                {{this.dataValues.eventDate}}
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -145,7 +200,9 @@
 
                     <span>
                         <i class="question icon"></i>
-                        <a href="#">Quick Facts about Presentation anxiety</a>
+                        <a id="presentation-prep"
+                            href="https://www.mayoclinic.org/diseases-conditions/specific-phobias/expert-answers/fear-of-public-speaking/faq-20058416">Quick
+                            Facts about Presentation anxiety</a>
                     </span>
                 </div>
             </div>
@@ -170,7 +227,8 @@
 
                     <span>
                         <i class="question icon"></i>
-                        <a href="#">Things to Consider</a>
+                        <a href="https://www.themuse.com/advice/9-tips-for-navigating-your-first-networking-event">Things
+                            to Consider</a>
                     </span>
                 </div>
             </div>
@@ -197,7 +255,8 @@
 
                     <span>
                         <i class="question icon"></i>
-                        <a href="#">Body language and more!</a>
+                        <a href="https://www.experisjobs.us/exp_us/en/career-advice/20-tips-job-interviews.htm">Body
+                            language and more!</a>
                     </span>
                 </div>
             </div>
@@ -206,14 +265,54 @@
         </div>
         <br>
     </div>
-    <div class="jumbotron jumbotron-fluid bg-info">
-        <div class="container">
-            <h1 class="display-4 text-white">Upcoming Events <i class="calendar alternate outline icon"></i></h1>
 
-            <p class="lead text-white">This is a modified jumbotron that occupies the entire horizontal space of its
-                parent.
-            </p>
+    <!-- Reflection scores -->
+    <div class="jumbotron jumbotron-fluid bg-info ">
+        <div class="container">
+                <div class="ui horizontal divider">  
+            <h1 class="display-4 text-white">Personal Scores <i class="chart pie icon"></i></h1>
+            </div>
         </div>
+        <div class="ui basic segment">
+            <div class="ui hidden section divider"></div>
+            <div class="ui two column very relaxed grid text-center">
+                <div class="column">
+                        <i class="massive chart pie icon text-white"></i>
+                        <h4 class="text-white">Presentation</h4>
+                        <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium neque ab ducimus amet
+                            molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
+                            odit commodi laudantium incidunt corporis? Cumque.</p>
+
+                </div>
+                <div class="column">
+                        <i class="massive chart pie icon text-white"></i>
+                        <h4 class="text-white">Networking</h4>
+                        <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium neque ab ducimus amet
+                            molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
+                            odit commodi laudantium incidunt corporis? Cumque.</p>
+
+                </div>
+            </div>
+            <div class="ui hidden vertical divider"></div>
+        </div>
+        <div class="ui basic segment">
+            <div class="ui hidden section divider"></div>
+
+            <div class="ui column very relaxed grid text-center">
+                <div class="column">
+                    <i class="massive chart pie icon text-white"></i>
+                    <h4 class="text-white">Interview</h4>
+                    <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium neque ab ducimus amet
+                        molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
+                        odit commodi laudantium incidunt corporis? Cumque.</p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
     </div>
 
 
@@ -235,34 +334,23 @@
                     <div class="ui equal width form">
                         <div class="fields">
                             <div class="field">
-                                <label>Username</label>
-                                <input type="text" placeholder="Username">
+                                <label>Project name</label>
+                                <input type="text" class="Presentation-name" placeholder="Project Name">
                             </div>
                             <div class="field">
-                                <label>Password</label>
-                                <input type="password" autocomplete="off"
-                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
-                            </div>
-                        </div>
-                        <div class="fields">
-                            <div class="field">
-                                <label>First name</label>
-                                <input type="text" placeholder="First Name">
+                                <label>Event Date</label>
+                                <input type="text" class="Presentation-date" placeholder="Event Date">
                             </div>
                             <div class="field">
-                                <label>Middle name</label>
-                                <input type="text" placeholder="Middle Name">
-                            </div>
-                            <div class="field">
-                                <label>Last name</label>
-                                <input type="text" placeholder="Last Name">
+                                <label>Address </label>
+                                <input type="text" class="Presentation-location" placeholder="Address">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                    <div class="ui animated teal button" tabindex="0">
+                    <div class="ui animated teal button" tabindex="0" data-type="Presentation">
                         <div class="visible content">Let's add the event!</div>
                         <div class="hidden content">
                             <i class="right arrow icon"></i>
@@ -287,34 +375,23 @@
                     <div class="ui equal width form">
                         <div class="fields">
                             <div class="field">
-                                <label>Username</label>
-                                <input type="text" placeholder="Username">
+                                <label>Event Name</label>
+                                <input type="text" class="Networking-name" placeholder="Event Name">
                             </div>
                             <div class="field">
-                                <label>Password</label>
-                                <input type="password" autocomplete="off"
-                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
-                            </div>
-                        </div>
-                        <div class="fields">
-                            <div class="field">
-                                <label>First name</label>
-                                <input type="text" placeholder="First Name">
+                                <label>Event Date</label>
+                                <input type="text" class="Networking-date" placeholder="Event Date">
                             </div>
                             <div class="field">
-                                <label>Middle name</label>
-                                <input type="text" placeholder="Middle Name">
-                            </div>
-                            <div class="field">
-                                <label>Last name</label>
-                                <input type="text" placeholder="Last Name">
+                                <label>Address </label>
+                                <input type="text" class="Networking-location" placeholder="Address">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                    <div class="ui animated teal button" tabindex="0">
+                    <div class="ui animated teal button" tabindex="0" data-type="Networking">
                         <div class="visible content">Let's add the event!</div>
                         <div class="hidden content">
                             <i class="right arrow icon"></i>
@@ -339,34 +416,23 @@
                     <div class="ui equal width form">
                         <div class="fields">
                             <div class="field">
-                                <label>Username</label>
-                                <input type="text" placeholder="Username">
+                                <label>Company name</label>
+                                <input type="text" class="Interview-name" placeholder="Company Name">
                             </div>
                             <div class="field">
-                                <label>Password</label>
-                                <input type="password" autocomplete="off"
-                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
-                            </div>
-                        </div>
-                        <div class="fields">
-                            <div class="field">
-                                <label>First name</label>
-                                <input type="text" placeholder="First Name">
+                                <label>Event Date`</label>
+                                <input type="text" class="Interview-date" placeholder="Event Date">
                             </div>
                             <div class="field">
-                                <label>Middle name</label>
-                                <input type="text" placeholder="Middle Name">
-                            </div>
-                            <div class="field">
-                                <label>Last name</label>
-                                <input type="text" placeholder="Last Name">
+                                <label>Address</label>
+                                <input type="text" class="Interview-location" placeholder="Address">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                    <div class="ui animated teal button" tabindex="0">
+                    <div class="ui animated teal button" tabindex="0" data-type="Interview">
                         <div class="visible content">Let's add the event!</div>
                         <div class="hidden content">
                             <i class="right arrow icon"></i>
@@ -376,27 +442,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-    
-    <!-- Bootstrap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-        <!-- semantic UI JS -->
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
-            </script>
-        <script src="../semantic/dist/semantic.js"></script>
-
-
-    <!-- local JS -->
-    <script src="./js/index.js"></script>
 </body>
 
 </html>
