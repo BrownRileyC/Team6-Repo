@@ -29,30 +29,30 @@ router.post('/api/events', function (req, res) {
   });
 });
 
-// router.get('/past/:userID', function (req, res) {
-//   var today = new Date();
-//   var dd = today.getDate();
-//   var mm = today.getMonth() + 1; //January is 0!
-//   var yyyy = today.getFullYear();
+router.get('api/events/past/:userID', function (req, res) {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0!
+  var yyyy = today.getFullYear();
 
-//   today = mm + '/' + dd + '/' + yyyy;
+  today = mm + '/' + dd + '/' + yyyy;
 
-//   console.log(req.baseUrl);
-//         db.Events.findAll({
-//             include: [db.Tasks],
-//             where: {
-//               userID: req.params.userID,
-//               eventDate: {
-//                 $lte: today
-//               }
-//             }
-//           }).then(function (dbEvents) {
-//             var hbsObject = {
-//                 Object: dbEvents
-//             }
-//             res.render("index", hbsObject);
-//           });
-// });
+  console.log(req.baseUrl);
+        db.Events.findAll({
+            include: [db.Tasks],
+            where: {
+              userID: req.params.userID,
+              eventDate: {
+                $lte: today
+              }
+            }
+          }).then(function (dbEvents) {
+            var hbsObject = {
+                Object: dbEvents
+            }
+            res.render("index", hbsObject);
+          });
+});
 
 router.get('/event/:eventID', function (req, res) {
   console.log('Did I go?')
