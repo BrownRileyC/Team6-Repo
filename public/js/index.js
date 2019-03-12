@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   //on page load, check if there is user in local storage and get events
   if (localStorage.getItem("userID")) {
-    displayEvents("upcoming");
+    // displayEvents("upcoming");
 
     var logoutDiv = $("<a id=\"logout\" href=\"#\">Logout</a>")
     $(".navbar").append(logoutDiv);
@@ -10,49 +10,49 @@ $(document).ready(function () {
   }
 
   // function to get and display events
-  function displayEvents(dateContext) {
-    $.get("/api/events/" + dateContext + "/" + localStorage.getItem("userID"), function(data) {
+  // function displayEvents(dateContext) {
+  //   $.get("/api/events/" + dateContext + "/" + localStorage.getItem("userID"), function(data) {
 
-      $("#event-list").empty();
+  //     $("#event-list").empty();
 
-      console.log(data);
+  //     console.log(data);
 
-      if (data && data.length) {
-        for (var i=0; i<data.length; i++) {
-          var itemDiv = $("<div class=\"item\">");
-          var listItemDiv = $("<div class=\"content\">");
-          itemDiv.append(listItemDiv);
-          var headerItemDiv = $("<a class=\"header\" href=\"#\">");
-          headerItemDiv.text(data[i].eventName);
-          listItemDiv.append(headerItemDiv);
-          var descriptionItemDiv = $("<div class=\"description\">");
-          descriptionItemDiv.text(data[i].eventDate);
-          listItemDiv.append(descriptionItemDiv);
-          $("#event-list").append(itemDiv);
-        }
-      }
-      else {
-        var noEventsDiv = $("<div class=\"description\">");
-        if (dateContext==="upcoming") {
-          noEventsDiv.text("No Upcoming Events");
-        }
-        else {
-          noEventsDiv.text("No Past Events");
-        }
-        $("#event-list").append(noEventsDiv);
-      }
+  //     if (data && data.length) {
+  //       for (var i=0; i<data.length; i++) {
+  //         var itemDiv = $("<div class=\"item\">");
+  //         var listItemDiv = $("<div class=\"content\">");
+  //         itemDiv.append(listItemDiv);
+  //         var headerItemDiv = $("<a class=\"header\" href=\"#\">");
+  //         headerItemDiv.text(data[i].eventName);
+  //         listItemDiv.append(headerItemDiv);
+  //         var descriptionItemDiv = $("<div class=\"description\">");
+  //         descriptionItemDiv.text(data[i].eventDate);
+  //         listItemDiv.append(descriptionItemDiv);
+  //         $("#event-list").append(itemDiv);
+  //       }
+  //     }
+  //     else {
+  //       var noEventsDiv = $("<div class=\"description\">");
+  //       if (dateContext==="upcoming") {
+  //         noEventsDiv.text("No Upcoming Events");
+  //       }
+  //       else {
+  //         noEventsDiv.text("No Past Events");
+  //       }
+  //       $("#event-list").append(noEventsDiv);
+  //     }
 
 
-    });
-  } 
+  //   });
+  // } 
 
   // on click for events data toggles
-  $(".toggle-button").click(function() {
-    $(".toggle-button").removeClass("active");
-    $(this).addClass("active");
-    var dateContext = $(this).attr("data-tab");
-    displayEvents(dateContext);
-  })
+  // $(".toggle-button").click(function() {
+  //   $(".toggle-button").removeClass("active");
+  //   $(this).addClass("active");
+  //   var dateContext = $(this).attr("data-tab");
+  //   // displayEvents(dateContext);
+  // })
 
   // on click for login button
   $("#loginBtn").click(function () {
@@ -77,8 +77,7 @@ $(document).ready(function () {
     };
 
     $.post("/api/users", newUser, function (data) {
-      localStorage.setItem("userID", data.userID);
-      location.reload();
+
     });
 
   });
@@ -90,22 +89,13 @@ $(document).ready(function () {
     var userName = $("#username-input").val().trim();
     var password = $("#pw-input").val().trim();
 
-    $.get("/api/users/" + userName + "/" + password, function (data) {
-      localStorage.setItem("userID", JSON.stringify(data));
-
-      // displayEvents("upcoming");
-
-    });
+    $.post("/api/users/login",{userName: userName, password: password});
     // refresh the page
-    location.reload();
   });
 
   $(".ui.animated.teal.button").on("click", function () {
     event.preventDefault();
 
-    if (!localStorage.getItem("userID")) {
-      alert("please log in")
-    } else {
       var eventType = $(this).attr('data-type');
       console.log(eventType);
 
@@ -116,13 +106,9 @@ $(document).ready(function () {
         eventType: eventType,
         userID: localStorage.getItem("userID")
       }
-      $.post("/api/events", body, function (data) {
+      $.post("/api/event/new", body, function (data) {
         console.log(data);
-        localStorage.setItem("eventID", JSON.stringify(data.id));
-        window.location.href = "./event.html";
-        return false;
       })
-    }
   });
 
   $("#backToHome").on("click", function () {

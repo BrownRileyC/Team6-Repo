@@ -4,55 +4,67 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function (req, res) {
-    res.render("index");
+  res.render("index");
 });
 
-router.post('/api/events', function (req, res) {
+router.get('/api/events/:userID', function (req, res) {
   // var today = new Date();
   // var dd = today.getDate();
   // var mm = today.getMonth() + 1; //January is 0!
   // var yyyy = today.getFullYear();
 
   // today = mm + '/' + dd + '/' + yyyy;
-  console.log(req.body.userID);
+  console.log(req.params.userID);
   console.log(req.baseUrl);
+
+  console.log('After Redirect to /api/events ran========================================================================');
+
   db.Events.findAll({
     include: [db.Tasks],
     where: {
-      userID: req.body.userID
+      userID: req.params.userID
       // eventDate: {
       //   $gte: today
       // }
     }
   }).then(function (dbEvents) {
-    res.json(dbEvents);
+    console.log(dbEvents);
+    var hbsObject = {
+      Object: dbEvents
+    }
+    console.log(hbsObject);
+    console.log('after findAll')
+    console.log("Event Name: "+hbsObject.Object[0].dataValues.eventName);
+    res.render('index', hbsObject);
+  }).catch(function(error){
+    console.log(error);
   });
 });
 
-router.get('api/events/past/:userID', function (req, res) {
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1; //January is 0!
-  var yyyy = today.getFullYear();
+// router.get('api/events/past/:userID', function (req, res) {
+//   var today = new Date();
+//   var dd = today.getDate();
+//   var mm = today.getMonth() + 1; //January is 0!
+//   var yyyy = today.getFullYear();
 
-  today = mm + '/' + dd + '/' + yyyy;
+//   today = mm + '/' + dd + '/' + yyyy;
 
-  console.log(req.baseUrl);
-        db.Events.findAll({
-            include: [db.Tasks],
-            where: {
-              userID: req.params.userID,
-              eventDate: {
-                $lte: today
-              }
-            }
-          }).then(function (dbEvents) {
-            var hbsObject = {
-                Object: dbEvents
-            }
-            res.render("index", hbsObject);
-          });
-});
+//   console.log(req.baseUrl);
+//   db.Events.findAll({
+//     include: [db.Tasks],
+//     where: {
+//       userID: req.params.userID,
+//       eventDate: {
+//         $lte: today
+//       }
+//     }
+//   }).then(function (dbEvents) {
+//     var hbsObject = {
+//       Object: dbEvents
+//     }
+//     res.render("index", hbsObject);
+//   });
+// });
 
 router.get('/event/:eventID', function (req, res) {
   console.log('Did I go?')
@@ -81,7 +93,7 @@ router.post("/api/users/login", function (req, res) {
     }
   }).then(function (dbUsers) {
     console.log(dbUsers)
-    res.json(dbUsers[0].dataValues.id);
+    res.redirect('/api/events/'+dbUsers[0].dataValues.id);
   });
 });
 
@@ -94,7 +106,7 @@ router.post("/api/users", function (req, res) {
     lastName: req.body.lastName
   }).then(function (dbUsers) {
     console.log(dbUsers)
-    res.json(dbUsers.id);
+    res.redirect('/api/events/'+dbUsers.id);
   });
 });
 
@@ -119,7 +131,7 @@ router.post("/api/new/event", function (req, res) {
           { task: "Second Interview Task", EventId: dbEvents.dataValues.id },
           { task: "Third Interview Task", EventId: dbEvents.dataValues.id }
         ]).then(function (dbTasks) {
-          res.json(dbEvents.dataValues.id);
+          res.redirect('/event/'+dbEvents.dataValues.id);
         });
       } else if (req.body.eventType === "Networking") {
         db.Tasks.bulkCreate([
@@ -127,7 +139,7 @@ router.post("/api/new/event", function (req, res) {
           { task: "Second Networking Task", EventId: dbEvents.dataValues.id },
           { task: "Third Networking Task", EventId: dbEvents.dataValues.id }
         ]).then(function (dbTasks) {
-          res.json(dbEvents.dataValues.id);
+          res.redirect('/event/'+dbEvents.dataValues.id);
         });
       } else {
         db.Tasks.bulkCreate([
@@ -135,7 +147,7 @@ router.post("/api/new/event", function (req, res) {
           { task: "Second Presentation Task", EventId: dbEvents.dataValues.id },
           { task: "Third Presentation Task", EventId: dbEvents.dataValues.id }
         ]).then(function (dbTasks) {
-          res.json(dbEvents.dataValues.id);
+          res.redirect('/event/'+dbEvents.dataValues.id);
         });
       }
     });

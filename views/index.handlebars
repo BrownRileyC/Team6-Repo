@@ -1,31 +1,10 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>You Got This!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- semantic UI css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <!-- Boostrap  -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <!-- semantic UI JS -->
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <!-- jquery -->
 
     <!-- Bootstrap -->
 
     <!-- local JS -->
-    <script src="./js/index.js"></script>
+    
 </head>
 
 <body>
@@ -154,8 +133,11 @@
                 <div class="ui vertical fluid text menu">
                     <div id="event-list" class="ui list">
                         <div class="container">
+                            <p>Hello From the container</p> 
                             <div class="mapTarget jumbotron mt-4">
+                                <ul>
                                 {{#each Object}}
+                                <p>{{log this.dataValues.eventName}}</p>
                                 <div class="eventItem item">
                                     <div class="eventContent content">
                                         <a class="eventHeader header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
@@ -165,6 +147,7 @@
                                     </div>
                                 </div>
                                 {{/each}}
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -446,6 +429,5 @@
             </div>
         </div>
     </div>
-</body>
 
-</html>
+    <script src="./js/index.js"></script>
