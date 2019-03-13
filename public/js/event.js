@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("#backToHome").on("click", function () {
-      window.location.href = "./index.html";
+      window.location.href = "./index.handlebars";
       return false;
     });
   

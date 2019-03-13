@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-<<<<<<< HEAD
-=======
   //on page load, check if there is user in local storage and get events
   if (localStorage.getItem("userID")) {
     displayEvents("upcoming");
@@ -48,7 +46,6 @@ $(document).ready(function () {
     });
   } 
 
->>>>>>> master
   // on click for events data toggles
   $(".toggle-button").click(function() {
     $(".toggle-button").removeClass("active");
@@ -80,13 +77,8 @@ $(document).ready(function () {
     };
 
     $.post("/api/users", newUser, function (data) {
-<<<<<<< HEAD
-      localStorage.setItem("userID", data);
-      window.location.href = '/'+localStorage.getItem("userID");
-=======
       localStorage.setItem("userID", data.userID);
       location.reload();
->>>>>>> master
     });
 
   });
@@ -99,15 +91,10 @@ $(document).ready(function () {
     var password = $("#pw-input").val().trim();
 
     $.get("/api/users/" + userName + "/" + password, function (data) {
-<<<<<<< HEAD
-      localStorage.setItem("userID", data);
-      window.location.href = '/'+localStorage.getItem("userID");
-=======
       localStorage.setItem("userID", JSON.stringify(data));
 
       // displayEvents("upcoming");
 
->>>>>>> master
     });
     // refresh the page
     location.reload();
@@ -137,20 +124,13 @@ $(document).ready(function () {
     }
   });
 
-  $("#backToHome").on("click", function () {
-    window.location.href = "./index.html";
-    return false;
-  });
+  
 
   $("#logout").on("click", function() {
     localStorage.clear();
-<<<<<<< HEAD
-    location.reload();
-=======
 
     location.reload();
 
->>>>>>> master
   });
 
   
