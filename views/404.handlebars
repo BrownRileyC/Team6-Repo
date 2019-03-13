@@ -1,8 +1,9 @@
 <div class="container">
   <div class="jumbotron mt-4">
-    <h1 class="display-4 text-center">404 Not Found
+    {{#each Object}}
+    <p>{{this.dataValues.id}}</p>
       <span role="img" aria-label="Face with rolling eyes">🙄</span>
-    </h1>
+    {{/each}}
     <a href="/">← Back To Home</a>
   </div>
 </div>
