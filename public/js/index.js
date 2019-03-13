@@ -1,5 +1,54 @@
 $(document).ready(function () {
 
+<<<<<<< HEAD
+=======
+  //on page load, check if there is user in local storage and get events
+  if (localStorage.getItem("userID")) {
+    displayEvents("upcoming");
+
+    var logoutDiv = $("<a id=\"logout\" href=\"#\">Logout</a>")
+    $(".navbar").append(logoutDiv);
+
+  }
+
+  // function to get and display events
+  function displayEvents(dateContext) {
+    $.get("/api/events/" + dateContext + "/" + localStorage.getItem("userID"), function(data) {
+
+      $("#event-list").empty();
+
+      console.log(data);
+
+      if (data && data.length) {
+        for (var i=0; i<data.length; i++) {
+          var itemDiv = $("<div class=\"item\">");
+          var listItemDiv = $("<div class=\"content\">");
+          itemDiv.append(listItemDiv);
+          var headerItemDiv = $("<a class=\"header\" href=\"#\">");
+          headerItemDiv.text(data[i].eventName);
+          listItemDiv.append(headerItemDiv);
+          var descriptionItemDiv = $("<div class=\"description\">");
+          descriptionItemDiv.text(data[i].eventDate);
+          listItemDiv.append(descriptionItemDiv);
+          $("#event-list").append(itemDiv);
+        }
+      }
+      else {
+        var noEventsDiv = $("<div class=\"description\">");
+        if (dateContext==="upcoming") {
+          noEventsDiv.text("No Upcoming Events");
+        }
+        else {
+          noEventsDiv.text("No Past Events");
+        }
+        $("#event-list").append(noEventsDiv);
+      }
+
+
+    });
+  } 
+
+>>>>>>> master
   // on click for events data toggles
   $(".toggle-button").click(function() {
     $(".toggle-button").removeClass("active");
@@ -31,8 +80,13 @@ $(document).ready(function () {
     };
 
     $.post("/api/users", newUser, function (data) {
+<<<<<<< HEAD
       localStorage.setItem("userID", data);
       window.location.href = '/'+localStorage.getItem("userID");
+=======
+      localStorage.setItem("userID", data.userID);
+      location.reload();
+>>>>>>> master
     });
 
   });
@@ -45,9 +99,18 @@ $(document).ready(function () {
     var password = $("#pw-input").val().trim();
 
     $.get("/api/users/" + userName + "/" + password, function (data) {
+<<<<<<< HEAD
       localStorage.setItem("userID", data);
       window.location.href = '/'+localStorage.getItem("userID");
+=======
+      localStorage.setItem("userID", JSON.stringify(data));
+
+      // displayEvents("upcoming");
+
+>>>>>>> master
     });
+    // refresh the page
+    location.reload();
   });
 
   $(".ui.animated.teal.button").on("click", function () {
@@ -81,7 +144,13 @@ $(document).ready(function () {
 
   $("#logout").on("click", function() {
     localStorage.clear();
+<<<<<<< HEAD
     location.reload();
+=======
+
+    location.reload();
+
+>>>>>>> master
   });
 
   
