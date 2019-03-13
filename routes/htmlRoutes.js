@@ -91,7 +91,7 @@ router.post("/api/users/login", function (req, res) {
     }
   }).then(function (dbUsers) {
     console.log(dbUsers)
-    res.redirect('/api/events/'+dbUsers[0].dataValues.id);
+    res.json(dbUsers[0].dataValues.id);
   });
 });
 
@@ -104,7 +104,7 @@ router.post("/api/users", function (req, res) {
     lastName: req.body.lastName
   }).then(function (dbUsers) {
     console.log(dbUsers)
-    res.redirect('/api/events/'+dbUsers.id);
+    res.json(dbUsers.id);
   });
 });
 
@@ -129,7 +129,8 @@ router.post("/api/new/event", function (req, res) {
           { task: "Second Interview Task", EventId: dbEvents.dataValues.id },
           { task: "Third Interview Task", EventId: dbEvents.dataValues.id }
         ]).then(function (dbTasks) {
-          res.redirect('/event/'+dbEvents.dataValues.id);
+          console.log(dbEvents.dataValues.id);
+          res.json(dbEvents.dataValues.id);
         });
       } else if (req.body.eventType === "Networking") {
         db.Tasks.bulkCreate([
@@ -137,7 +138,7 @@ router.post("/api/new/event", function (req, res) {
           { task: "Second Networking Task", EventId: dbEvents.dataValues.id },
           { task: "Third Networking Task", EventId: dbEvents.dataValues.id }
         ]).then(function (dbTasks) {
-          res.redirect('/event/'+dbEvents.dataValues.id);
+          res.json(dbEvents.dataValues.id);
         });
       } else {
         db.Tasks.bulkCreate([
@@ -145,7 +146,7 @@ router.post("/api/new/event", function (req, res) {
           { task: "Second Presentation Task", EventId: dbEvents.dataValues.id },
           { task: "Third Presentation Task", EventId: dbEvents.dataValues.id }
         ]).then(function (dbTasks) {
-          res.redirect('/event/'+dbEvents.dataValues.id);
+          res.json(dbEvents.dataValues.id);
         });
       }
     });

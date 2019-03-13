@@ -55,8 +55,11 @@
   // on click for login button
   $("#loginBtn").click(function () {
     event.preventDefault();
-
-    $.post('/api/users/login', {userName: 'RileyCB', password: '1234'});
+    $.post("/api/users/login",{userName: 'RileyCB', password: '1234'}, function(data){
+      localStorage.setItem('userID',JSON.stringify(data));
+      window.location.href = '/api/events/'+JSON.stringify(data);
+    });
+    
 
     console.log('hi');
     // $("#loginModal").modal();
@@ -110,8 +113,8 @@
         eventType: eventType,
         userID: localStorage.getItem("userID")
       }
-      $.post("/api/event/new", body, function (data) {
-        console.log(data);
+      $.post("/api/new/event", body, function (data) {
+        window.location.href = '/event/'+JSON.stringify(data)
       })
   });
 
