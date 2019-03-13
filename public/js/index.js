@@ -1,5 +1,3 @@
-$(document).ready(function () {
-
   //on page load, check if there is user in local storage and get events
   if (localStorage.getItem("userID")) {
     // displayEvents("upcoming");
@@ -56,12 +54,17 @@ $(document).ready(function () {
 
   // on click for login button
   $("#loginBtn").click(function () {
-    $("#loginModal").modal();
+    event.preventDefault();
+
+    $.post('/api/users/login', {userName: 'RileyCB', password: '1234'});
+
+    console.log('hi');
+    // $("#loginModal").modal();
   });
 
   // on click for signup button
   $("#signupBtn").click(function () {
-    $("#signupModal").modal();
+    $("#signupModal").modal('show');
   });
 
 
@@ -84,6 +87,7 @@ $(document).ready(function () {
 
   $("#login-submit").on("click", function (event) {
     event.preventDefault();
+    console.log('you clicked me')
     $("#loginModal").modal('hide');
 
     var userName = $("#username-input").val().trim();
@@ -122,11 +126,5 @@ $(document).ready(function () {
     location.reload();
 
   });
-
-  
-
-
-
-});
 
 

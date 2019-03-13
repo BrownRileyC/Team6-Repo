@@ -28,13 +28,11 @@ router.get('/api/events/:userID', function (req, res) {
       // }
     }
   }).then(function (dbEvents) {
-    console.log(dbEvents);
     var hbsObject = {
-      Object: dbEvents
+      object: dbEvents
     }
-    console.log(hbsObject);
     console.log('after findAll')
-    console.log("Event Name: "+hbsObject.Object[0].dataValues.eventName);
+    console.log("Event Name: "+hbsObject.object[0].dataValues.eventName);
     res.render('index', hbsObject);
   }).catch(function(error){
     console.log(error);

@@ -1,153 +1,151 @@
+<!-- jquery -->
 
-    <!-- jquery -->
+<!-- Bootstrap -->
 
-    <!-- Bootstrap -->
+<!-- local JS -->
 
-    <!-- local JS -->
-    
-</head>
+<!-- Nav bar  -->
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
 
-<body>
-    <!-- Nav bar  -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+    <a class="navbar-brand" href="#">
+        <button type="button" class="ui inverted secondary button" id="loginBtn">Login</button>
+    </a>
 
-        <a class="navbar-brand" href="#">
-            <button type="button" class="ui inverted secondary button" id="loginBtn">Login</button>
-        </a>
-
-        <a class="navbar-brand" href="#">
-            <button type="button" class="ui inverted secondary button" id="signupBtn">Sign up</button>
-        </a>
+    <a class="navbar-brand" href="#">
+        <button type="button" class="ui inverted secondary button" id="signupBtn">Sign up</button>
+    </a>
 
 
 
 
-    </nav>
+</nav>
 
-    <div>
-        <h1 class="text-center">You Got This!</h1>
-    </div>
+<div>
+    <h1 class="text-center">You Got This!</h1>
+</div>
 
-    <!-- <div class="text-right" id="logged-in">
+<!-- <div class="text-right" id="logged-in">
         Welcome "user" | <a class="navbar-brand" id="logout" href="#">Logout</a>
     </div> -->
 
 
-    <div class="ui dividing header"></div>
-    <!-- Signup Modal -->
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="ui equal width form">
-                        <div class="fields">
-                            <div class="field">
-                                <label>Username</label>
-                                <input type="text" id="new-username-input" placeholder="Username">
-                            </div>
-                            <div class="field">
-                                <label>Password</label>
-                                <input type="password" id="new-pw-input" autocomplete="off"
-                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
-                            </div>
+<div class="ui dividing header"></div>
+<!-- Signup Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ui equal width form">
+                    <div class="fields">
+                        <div class="field">
+                            <label>Username</label>
+                            <input type="text" id="new-username-input" placeholder="Username">
                         </div>
-                        <div class="fields">
-                            <div class="field">
-                                <label>First name</label>
-                                <input type="text" id="firstName" placeholder="First Name">
-                            </div>
-                            <div class="field">
-                                <label>Last name</label>
-                                <input type="text" id="lastName" placeholder="Last Name">
-                            </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" id="new-pw-input" autocomplete="off"
+                                style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <div class="field">
+                            <label>First name</label>
+                            <input type="text" id="firstName" placeholder="First Name">
+                        </div>
+                        <div class="field">
+                            <label>Last name</label>
+                            <input type="text" id="lastName" placeholder="Last Name">
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                    <div id="signup-submit" class="ui vertical animated button" tabindex="0">
-                        <div class="hidden content">Login in</a></div>
-                        <div class="visible content">
-                            <i class="thumbs up outline icon"></i>
-                        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                <div id="signup-submit" class="ui vertical animated button" tabindex="0">
+                    <div class="hidden content">Login in</a></div>
+                    <div class="visible content">
+                        <i class="thumbs up outline icon"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Login Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="ui equal width form">
-                        <div class="fields">
-                            <div class="field">
-                                <label>Username</label>
-                                <input type="text" id="username-input" placeholder="Username">
-                            </div>
-                            <div class="field">
-                                <label>Password</label>
-                                <input type="password" id="pw-input" autocomplete="off"
-                                    style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
-                            </div>
+</div>
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ui equal width form">
+                    <div class="fields">
+                        <div class="field">
+                            <label>Username</label>
+                            <input type="text" id="username-input" placeholder="Username">
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" id="pw-input" autocomplete="off"
+                                style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                    <div id="login-submit" class="ui vertical animated button" tabindex="0">
-                        <div class="hidden content">Login in</a></div>
-                        <div class="visible content">
-                            <i class="thumbs up outline icon"></i>
-                        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                <div id="login-submit" class="ui vertical animated button" tabindex="0">
+                    <div class="hidden content">Login in</a></div>
+                    <div class="visible content">
+                        <i class="thumbs up outline icon"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!--right panel for events-->
-    <div class="ui basic segment">
-        <div class="ui dividing right internal attached rail">
-            <div class="ui attached segment">
-                <div class="ui header text-center">My Events</div>
-                <div class="ui two item stackable tabs menu">
-                    <a class="toggle-button item active" data-tab="upcoming">Upcoming</a>
-                    <a class="toggle-button item" data-tab="past">Past</a>
-                </div>
-                <div class="ui vertical fluid text menu">
-                    <div id="event-list" class="ui list">
-                        <div class="container">
-                            <p>Hello From the container</p> 
-                            <div class="mapTarget jumbotron mt-4">
-                                <ul>
-                                {{#each Object}}
-                                <p>{{log this.dataValues.eventName}}</p>
-                                <div class="eventItem item">
-                                    <div class="eventContent content">
-                                        <a class="eventHeader header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
-                                        <div class="eventDescription description">
-                                            {{this.dataValues.eventDate}}
-                                        </div>
-                                    </div>
+<!--right panel for events-->
+<div class="ui basic segment">
+    <div class="ui dividing right internal attached rail">
+        <div class="ui attached segment">
+            <div class="ui header text-center">My Events</div>
+            <div class="ui two item stackable tabs menu">
+                <a class="toggle-button item active" data-tab="upcoming">Upcoming</a>
+                <a class="toggle-button item" data-tab="past">Past</a>
+            </div>
+            <div class="ui vertical fluid text menu">
+                <div id="event-list" class="ui list">
+                    <div class="container">
+                        <div class="mapTarget jumbotron mt-4">
+                            <div class="eventItem item">
+                                <div class="eventContent content">
+                                    <ul>
+                                        {{#each object}}
+                                        <li>
+                                            {{this.dataValues.eventName}}
+                                            {{log this.dataValues.eventName}}
+                                            <a class="eventHeader header"
+                                                href="/event/{{this.dataValues.id}}">Hi this is in the anchor{{this.dataValues.eventName}}</a>
+                                            {{!-- <div class="eventDescription description">
+                                                {{this.dataValues.eventDate}}
+                                            </div> --}}
+                                        </li>
+                                        {{/each}}
+                                    </ul>
                                 </div>
-                                {{/each}}
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -155,279 +153,280 @@
             </div>
         </div>
     </div>
+</div>
 
 
-    <!-- landing page -->
+<!-- landing page -->
 
-    <!-- container -->
+<!-- container -->
 
 
-    <div class="container-fluid">
+<div class="container-fluid">
 
-        <div class="ui link cards">
-            <div class="card">
-                <div class="image">
-                    <img src="./styles/img/presentation.png">
-                </div>
-                <div class="content">
-                    <div class="header">Presentation Prep</div>
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal"
-                        data-target="#presentation">Add Event</button>
+    <div class="ui link cards">
+        <div class="card">
+            <div class="image">
+                <img src="./styles/img/presentation.png">
+            </div>
+            <div class="content">
+                <div class="header">Presentation Prep</div>
+                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#presentation">Add
+                    Event</button>
 
-                    <div class="description">
-                        Have an upcoming presentation and you are already stressing out?
-                        Let's add this event so we dont forget and we'll give you helpful tools you need
-                        to crush it!
-                    </div>
-                </div>
-                <div class="extra content">
-
-                    <span>
-                        <i class="question icon"></i>
-                        <a id="presentation-prep"
-                            href="https://www.mayoclinic.org/diseases-conditions/specific-phobias/expert-answers/fear-of-public-speaking/faq-20058416">Quick
-                            Facts about Presentation anxiety</a>
-                    </span>
+                <div class="description">
+                    Have an upcoming presentation and you are already stressing out?
+                    Let's add this event so we dont forget and we'll give you helpful tools you need
+                    to crush it!
                 </div>
             </div>
-            <div class="card">
-                <div class="image">
-                    <img src="./styles/img/networking.jpeg">
-                </div>
-                <div class="content">
-                    <div class="header">Networking Event</div>
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#networking">Add
-                        Event</button>
+            <div class="extra content">
 
-                    <div class="description">
-                        Looking to branch out for a new job or new friends? Networking events are great for gaining
-                        social skills
-                        and practicing elevator pitches! If you're nervous don't sweat it, add this event and we'll
-                        go
-                        step-by-step before your networking day.
-                    </div>
-                </div>
-                <div class="extra content">
-
-                    <span>
-                        <i class="question icon"></i>
-                        <a href="https://www.themuse.com/advice/9-tips-for-navigating-your-first-networking-event">Things
-                            to Consider</a>
-                    </span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="image">
-                    <img src="./styles/img/interview.jpg">
-                </div>
-                <div class="content">
-                    <div class="header">Interview time!</div>
-
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#interview">Add
-                        Event</button>
-
-
-
-                    <div class="description">
-                        Interviews are nerve wrecking for everyone, with us, we give you the best tips/tricks to
-                        remember
-                        so you dont go in there feeling it's you against the company...we got <strong>YOUR</strong>
-                        back.
-                    </div>
-                </div>
-                <div class="extra content">
-
-                    <span>
-                        <i class="question icon"></i>
-                        <a href="https://www.experisjobs.us/exp_us/en/career-advice/20-tips-job-interviews.htm">Body
-                            language and more!</a>
-                    </span>
-                </div>
-            </div>
-            <div class="ui horizontal divider"></div>
-
-        </div>
-        <br>
-    </div>
-
-    <!-- Reflection scores -->
-    <div class="jumbotron jumbotron-fluid bg-info ">
-        <div class="container">
-            <div class="ui horizontal divider">
-                <h1 class="display-4 text-white">Personal Scores <i class="chart pie icon"></i></h1>
+                <span>
+                    <i class="question icon"></i>
+                    <a id="presentation-prep"
+                        href="https://www.mayoclinic.org/diseases-conditions/specific-phobias/expert-answers/fear-of-public-speaking/faq-20058416">Quick
+                        Facts about Presentation anxiety</a>
+                </span>
             </div>
         </div>
-        <div class="ui basic segment">
-            <div class="ui hidden section divider"></div>
-            <div class="ui two column very relaxed grid text-center">
-                <div class="column">
-                    <i class="massive chart pie icon text-white"></i>
-                    <h4 class="text-white">Presentation</h4>
-                    <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium
-                        neque ab ducimus amet
-                        molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
-                        odit commodi laudantium incidunt corporis? Cumque.</p>
+        <div class="card">
+            <div class="image">
+                <img src="./styles/img/networking.jpeg">
+            </div>
+            <div class="content">
+                <div class="header">Networking Event</div>
+                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#networking">Add
+                    Event</button>
 
-                </div>
-                <div class="column">
-                    <i class="massive chart pie icon text-white"></i>
-                    <h4 class="text-white">Networking</h4>
-                    <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium
-                        neque ab ducimus amet
-                        molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
-                        odit commodi laudantium incidunt corporis? Cumque.</p>
-
+                <div class="description">
+                    Looking to branch out for a new job or new friends? Networking events are great for gaining
+                    social skills
+                    and practicing elevator pitches! If you're nervous don't sweat it, add this event and we'll
+                    go
+                    step-by-step before your networking day.
                 </div>
             </div>
-            <div class="ui hidden vertical divider"></div>
-        </div>
-        <div class="ui basic segment">
-            <div class="ui hidden section divider"></div>
+            <div class="extra content">
 
-            <div class="ui column very relaxed grid text-center">
-                <div class="column">
-                    <i class="massive chart pie icon text-white"></i>
-                    <h4 class="text-white">Interview</h4>
-                    <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium
-                        neque ab ducimus amet
-                        molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
-                        odit commodi laudantium incidunt corporis? Cumque.</p>
-
-                </div>
+                <span>
+                    <i class="question icon"></i>
+                    <a href="https://www.themuse.com/advice/9-tips-for-navigating-your-first-networking-event">Things
+                        to Consider</a>
+                </span>
             </div>
         </div>
+        <div class="card">
+            <div class="image">
+                <img src="./styles/img/interview.jpg">
+            </div>
+            <div class="content">
+                <div class="header">Interview time!</div>
+
+                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#interview">Add
+                    Event</button>
+
+
+
+                <div class="description">
+                    Interviews are nerve wrecking for everyone, with us, we give you the best tips/tricks to
+                    remember
+                    so you dont go in there feeling it's you against the company...we got <strong>YOUR</strong>
+                    back.
+                </div>
+            </div>
+            <div class="extra content">
+
+                <span>
+                    <i class="question icon"></i>
+                    <a href="https://www.experisjobs.us/exp_us/en/career-advice/20-tips-job-interviews.htm">Body
+                        language and more!</a>
+                </span>
+            </div>
+        </div>
+        <div class="ui horizontal divider"></div>
 
     </div>
+    <br>
+</div>
 
+<!-- Reflection scores -->
+<div class="jumbotron jumbotron-fluid bg-info ">
+    <div class="container">
+        <div class="ui horizontal divider">
+            <h1 class="display-4 text-white">Personal Scores <i class="chart pie icon"></i></h1>
+        </div>
+    </div>
+    <div class="ui basic segment">
+        <div class="ui hidden section divider"></div>
+        <div class="ui two column very relaxed grid text-center">
+            <div class="column">
+                <i class="massive chart pie icon text-white"></i>
+                <h4 class="text-white">Presentation</h4>
+                <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium
+                    neque ab ducimus amet
+                    molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
+                    odit commodi laudantium incidunt corporis? Cumque.</p>
 
+            </div>
+            <div class="column">
+                <i class="massive chart pie icon text-white"></i>
+                <h4 class="text-white">Networking</h4>
+                <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium
+                    neque ab ducimus amet
+                    molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
+                    odit commodi laudantium incidunt corporis? Cumque.</p>
+
+            </div>
+        </div>
+        <div class="ui hidden vertical divider"></div>
+    </div>
+    <div class="ui basic segment">
+        <div class="ui hidden section divider"></div>
+
+        <div class="ui column very relaxed grid text-center">
+            <div class="column">
+                <i class="massive chart pie icon text-white"></i>
+                <h4 class="text-white">Interview</h4>
+                <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium
+                    neque ab ducimus amet
+                    molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
+                    odit commodi laudantium incidunt corporis? Cumque.</p>
+
+            </div>
+        </div>
     </div>
 
+</div>
 
 
-    <!-- Modals for different events -->
+</div>
 
-    <!-- presentation -->
-    <div class="modal fade" id="presentation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Presentation Coming up!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="ui equal width form">
-                        <div class="fields">
-                            <div class="field">
-                                <label>Project name</label>
-                                <input type="text" class="Presentation-name" placeholder="Project Name">
-                            </div>
-                            <div class="field">
-                                <label>Event Date</label>
-                                <input type="text" class="Presentation-date" placeholder="Event Date">
-                            </div>
-                            <div class="field">
-                                <label>Address </label>
-                                <input type="text" class="Presentation-location" placeholder="Address">
-                            </div>
+
+
+<!-- Modals for different events -->
+
+<!-- presentation -->
+<div class="modal fade" id="presentation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Presentation Coming up!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ui equal width form">
+                    <div class="fields">
+                        <div class="field">
+                            <label>Project name</label>
+                            <input type="text" class="Presentation-name" placeholder="Project Name">
                         </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                    <div class="ui animated teal button" tabindex="0" data-type="Presentation">
-                        <div class="visible content">Let's add the event!</div>
-                        <div class="hidden content">
-                            <i class="right arrow icon"></i>
+                        <div class="field">
+                            <label>Event Date</label>
+                            <input type="text" class="Presentation-date" placeholder="Event Date">
+                        </div>
+                        <div class="field">
+                            <label>Address </label>
+                            <input type="text" class="Presentation-location" placeholder="Address">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- networking -->
-    <div class="modal fade" id="networking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Networking Event</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="ui equal width form">
-                        <div class="fields">
-                            <div class="field">
-                                <label>Event Name</label>
-                                <input type="text" class="Networking-name" placeholder="Event Name">
-                            </div>
-                            <div class="field">
-                                <label>Event Date</label>
-                                <input type="text" class="Networking-date" placeholder="Event Date">
-                            </div>
-                            <div class="field">
-                                <label>Address </label>
-                                <input type="text" class="Networking-location" placeholder="Address">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                    <div class="ui animated teal button" tabindex="0" data-type="Networking">
-                        <div class="visible content">Let's add the event!</div>
-                        <div class="hidden content">
-                            <i class="right arrow icon"></i>
-                        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                <div class="ui animated teal button" tabindex="0" data-type="Presentation">
+                    <div class="visible content">Let's add the event!</div>
+                    <div class="hidden content">
+                        <i class="right arrow icon"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- interview -->
-    <div class="modal fade" id="interview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Upcoming Interview</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="ui equal width form">
-                        <div class="fields">
-                            <div class="field">
-                                <label>Company name</label>
-                                <input type="text" class="Interview-name" placeholder="Company Name">
-                            </div>
-                            <div class="field">
-                                <label>Event Date`</label>
-                                <input type="text" class="Interview-date" placeholder="Event Date">
-                            </div>
-                            <div class="field">
-                                <label>Address</label>
-                                <input type="text" class="Interview-location" placeholder="Address">
-                            </div>
+</div>
+<!-- networking -->
+<div class="modal fade" id="networking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Networking Event</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ui equal width form">
+                    <div class="fields">
+                        <div class="field">
+                            <label>Event Name</label>
+                            <input type="text" class="Networking-name" placeholder="Event Name">
+                        </div>
+                        <div class="field">
+                            <label>Event Date</label>
+                            <input type="text" class="Networking-date" placeholder="Event Date">
+                        </div>
+                        <div class="field">
+                            <label>Address </label>
+                            <input type="text" class="Networking-location" placeholder="Address">
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                    <div class="ui animated teal button" tabindex="0" data-type="Interview">
-                        <div class="visible content">Let's add the event!</div>
-                        <div class="hidden content">
-                            <i class="right arrow icon"></i>
-                        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                <div class="ui animated teal button" tabindex="0" data-type="Networking">
+                    <div class="visible content">Let's add the event!</div>
+                    <div class="hidden content">
+                        <i class="right arrow icon"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- interview -->
+<div class="modal fade" id="interview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Upcoming Interview</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ui equal width form">
+                    <div class="fields">
+                        <div class="field">
+                            <label>Company name</label>
+                            <input type="text" class="Interview-name" placeholder="Company Name">
+                        </div>
+                        <div class="field">
+                            <label>Event Date`</label>
+                            <input type="text" class="Interview-date" placeholder="Event Date">
+                        </div>
+                        <div class="field">
+                            <label>Address</label>
+                            <input type="text" class="Interview-location" placeholder="Address">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                <div class="ui animated teal button" tabindex="0" data-type="Interview">
+                    <div class="visible content">Let's add the event!</div>
+                    <div class="hidden content">
+                        <i class="right arrow icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <script src="./js/index.js"></script>
+<script src="/js/index.js"></script>
