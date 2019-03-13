@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+<<<<<<< HEAD
+=======
   //on page load, check if there is user in local storage and get events
   if (localStorage.getItem("userID")) {
     displayEvents("upcoming");
@@ -46,6 +48,7 @@ $(document).ready(function () {
     });
   } 
 
+>>>>>>> master
   // on click for events data toggles
   $(".toggle-button").click(function() {
     $(".toggle-button").removeClass("active");
@@ -77,8 +80,13 @@ $(document).ready(function () {
     };
 
     $.post("/api/users", newUser, function (data) {
+<<<<<<< HEAD
+      localStorage.setItem("userID", data);
+      window.location.href = '/'+localStorage.getItem("userID");
+=======
       localStorage.setItem("userID", data.userID);
       location.reload();
+>>>>>>> master
     });
 
   });
@@ -91,24 +99,28 @@ $(document).ready(function () {
     var password = $("#pw-input").val().trim();
 
     $.get("/api/users/" + userName + "/" + password, function (data) {
+<<<<<<< HEAD
+      localStorage.setItem("userID", data);
+      window.location.href = '/'+localStorage.getItem("userID");
+=======
       localStorage.setItem("userID", JSON.stringify(data));
 
       // displayEvents("upcoming");
 
+>>>>>>> master
     });
     // refresh the page
     location.reload();
   });
 
   $(".ui.animated.teal.button").on("click", function () {
+    $(".add-event-modal").modal('hide');
     event.preventDefault();
 
     if (!localStorage.getItem("userID")) {
       alert("please log in")
     } else {
       var eventType = $(this).attr('data-type');
-      console.log(eventType);
-
       var body = {
         eventName: $("." + eventType + "-name").val().trim(),
         eventDate: $("." + eventType + "-date").val().trim(),
@@ -116,10 +128,10 @@ $(document).ready(function () {
         eventType: eventType,
         userID: localStorage.getItem("userID")
       }
-      $.post("/api/events", body, function (data) {
-        console.log(data);
-        localStorage.setItem("eventID", JSON.stringify(data.id));
-        window.location.href = "./event.html";
+      $.post("/api/new/event", body, function (data) {
+        console.log("set the event in local storage")
+        localStorage.setItem("eventID", data);
+        window.location.href = '/event/'+localStorage.getItem("eventID");
         return false;
       })
     }
@@ -132,9 +144,13 @@ $(document).ready(function () {
 
   $("#logout").on("click", function() {
     localStorage.clear();
+<<<<<<< HEAD
+    location.reload();
+=======
 
     location.reload();
 
+>>>>>>> master
   });
 
   
