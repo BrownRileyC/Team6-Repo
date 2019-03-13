@@ -18,7 +18,7 @@ $(document).ready(function () {
           var itemDiv = $("<div class=\"item\">");
           var listItemDiv = $("<div class=\"content\">");
           itemDiv.append(listItemDiv);
-          var headerItemDiv = $("<a class=\"header\" href=\"#\">");
+          var headerItemDiv = $("<a href= './event.html' class=\"header\" >");
           headerItemDiv.text(data[i].eventName);
           listItemDiv.append(headerItemDiv);
           var descriptionItemDiv = $("<div class=\"description\">");
@@ -123,10 +123,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#backToHome").on("click", function () {
-    window.location.href = "./index.html";
-    return false;
-  });
+  
 
   $("#logout").on("click", function() {
     localStorage.clear();
