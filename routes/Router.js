@@ -42,7 +42,8 @@ router.post("/api/users/login", function (req, res) {
       pWord: req.body.password
     }
   }).then(function (dbUsers) {
-    if (!dbUsers[0].dataValues.id) {
+    console.log(dbUsers)
+    if (dbUsers.length < 1) {
       res.json(false)
     } else {
       res.json(dbUsers[0].dataValues.id);

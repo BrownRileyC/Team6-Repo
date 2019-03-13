@@ -32,8 +32,14 @@ $(document).ready(function () {
     var password = $("#pw-input").val().trim();
 
     $.post("/api/users/login", { userName: userName, password: password }, function (data) {
-      localStorage.setItem("userID", data);
-      window.location.href = '/' + localStorage.getItem("userID");
+      if (data === false) {
+        alert('Username or Password were incorrect, please try again')
+        $("#username-input").val("")
+        $("#pw-input").val("")
+      } else {
+        localStorage.setItem("userID", data);
+        window.location.href = '/' + localStorage.getItem("userID");
+      }
     });
   });
 
