@@ -1,8 +1,213 @@
-<div class="container">
-  <div class="jumbotron mt-4">
-    <h1 class="display-4 text-center">404 Not Found
-      <span role="img" aria-label="Face with rolling eyes">🙄</span>
-    </h1>
-    <a href="/">← Back To Home</a>
-  </div>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent ">
+        <a class="navbar-brand" href="#">
+            <div class="ui animated button" id="backToHome" tabindex="0">
+                <div class="visible content">Let's add another event</div>
+                <div class="hidden content">
+                    <i class="large arrow alternate circle left outline icon"></i>
+                </div>
+            </div>
+        </a>
+    </nav>
+    <h1 class="text-center">You Got This!</h1>
+
+
+
+    <!-- prep work (event) -->
+    <div class="ui center aligned basic segment">
+        <div class="ui horizontal divider">
+            <i class="large check icon"></i> Preparation Station
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+
+
+
+            <!-- section for appearance -->
+            <div id="appearance" class="col">
+                <h2 class="ui aligned icon header">
+                    <i class="street view icon"></i>
+                    Appearance
+                </h2>
+
+                <div class="ui left icon input">
+                    <input type="text" class="new-task1" placeholder="Add task here..">
+                    <i class="add icon"></i>
+                </div>
+                <div class="ui form">
+                    <div class="inline field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="edit" id="hidden" value='10'>
+                            <label data-app1=testing class="app1">Checkbox</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="inline field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden" value='20'>
+                            <label data-name="testing" class="app2">Turtles</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="inline field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden" value='30'>
+                            <label data-name="testing" class="app2">This</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="inline field">
+                        <div id="newAppBox" class="ui checkbox">
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- section for researching companies -->
+            <div id="research" class="col">
+                <h2 class="ui aligned icon header">
+                    <i class="keyboard icon"></i>
+                    Researching
+                </h2>
+                <div class="ui left icon input">
+                    <input type="text" class="new-task2" placeholder="Add task here..">
+                    <i class="add icon"></i>
+                </div>
+
+                <div class="ui form">
+                    <div class="inline field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden" value='40'>
+                            <label data-name="testing" class="res1">Checkbox</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="inline field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden" value='50'>
+                            <label data-name="testing" class="res2">Checkbox</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="inline field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden" value='60'>
+                            <label data-name="testing" class="res3">Checkbox</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="inline field">
+                        <div id="newResBox" class="ui checkbox">
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            
+            <!-- section for extra add ons -->
+            <div id="documents" class="col">
+                <h2 class="ui aligned icon header">
+                    <i class="folder open icon"></i>
+                    Documents
+                </h2>
+                <div class="ui left icon input">
+                    <input type="text" class="new-task3" placeholder="Add task here..">
+                    <i class="add icon"></i>
+                </div>
+
+                <div class="ui form">
+                    <div class="inline field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden" value='70'>
+                            <label data-name="testing" class="doc1">Checkbox</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui form">
+                    <div class="inline field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden" value='80'>
+                            <label data-name="testing" class="doc2">Checkbox</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui form">
+                    <div class="inline field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden" value='90'>
+                            <label data-name="testing" class="doc3">Checkbox</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="inline field">
+                        <div id="newDocBox" class="ui checkbox">
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui hidden section divider"></div>
+
+
+
+    <!--  during (event) tips/suggestions  -->
+    <div class="ui horizontal divider">
+        <i class="large arrow down icon"></i> Here are things to rememeber
+    </div>
+    <div class="ui placeholder segment">
+        <div class="ui two column very relaxed stackable grid">
+            <div class="column">
+                <div class="ui centered header"> Completed Tasks (look how far you've come!)</div>
+                <div class="ui aligned basic segment">
+                    <div class="progress progress-striped active" style="height: 40px;">
+                        <div class="bg-info progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; ">
+                            <h3 class="bar-perc"></h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="middle aligned column">
+
+
+                <ol class="ui list">
+                    <li>Signing Up</li>
+                    <li>User Benefits</li>
+                    <li>User Types
+                    </li>
+                    <li>Deleting Your Account</li>
+                </ol>
+                <div class="ui teal labeled icon button" tableindex="0">
+                    Reflection
+                    <i class="edit outline icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui vertical divider">
+        <i class="exchange icon"></i>
+    </div>
+    </div>
+
+<script src="/js/event.js"></script>
