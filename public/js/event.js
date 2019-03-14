@@ -1,5 +1,6 @@
 $(document).ready(function () {
   localStorage.setItem('eventID', window.location.href.slice(window.location.href.lastIndexOf('/') + 1));
+  var taskAmount = 9;
 
   $("#backToHome").on("click", function () {
     window.location.href = "/" + localStorage.getItem('userID');
@@ -42,92 +43,110 @@ $(document).ready(function () {
       $.ajax({
         method: "PUT",
         url: "/api/score",
-        data: {score: score,
-          id: localStorage.getItem('eventID')}
+        data: {
+          score: score,
+          id: localStorage.getItem('eventID')
+        }
       }).done(function (data) {
         location.reload();
       })
     };
   });
-});
 
-function test() {
-  $(".ui.checkbox").checkbox();
-} test();
-
-$(".new-task1").on("keyup", function (e) {
-  if (e.which === 13) {
-
-    var newCheck = $(this).val();
-
-    console.log("new check" + newCheck);
-
-    var checkList = [];
-    console.log(checkList);
-
-    checkList.push(newCheck);
-    for (var i = 0; i < checkList.length; i++) {
-      $("#newAppBox").append(
-        "<input type='checkbox' tabindex='0' class='hidden' value='40'> ",
-        "<label> " + checkList[i], "</label>"
-      )
-    }
-    $(".new-task1").val(' ');
+  function test() {
+    $(".ui.checkbox").checkbox();
   }
-})
+  test();
 
-$(".new-task2").on("keyup", function (e) {
-  if (e.which === 13) {
+  $(".new-task1").on("keyup", function (e) {
+    console.log('Hey I ran');
+    if (e.which === 13) {
 
-    var newCheck = $(this).val();
+      var newCheck = $(this).val();
 
-    console.log("new check" + newCheck);
+      console.log("new check" + newCheck);
 
-    var checkList = [];
-    console.log(checkList);
+      var checkList = [];
+      console.log(checkList);
 
-    checkList.push(newCheck);
-    for (var i = 0; i < checkList.length; i++) {
-      $("#newResBox").append(
-        "<input type='checkbox' tabindex='0' class='hidden' value='40'>",
-        "<label> " + checkList[i], "</label>"
-      )
+      checkList.push(newCheck);
+      for (var i = 0; i < checkList.length; i++) {
+        $("#newAppBox").append(
+          "<input type='checkbox' tabindex='0' class='hidden' value='40'> ",
+          "<label> " + checkList[i], "</label>"
+        )
+      }
+      $(".new-task1").val(' ');
+      taskAmount ++;
+      progressBar();
     }
-    $(".new-task2").val(' ');
-  }
-})
+  })
 
-$(".new-task3").on("keyup", function (e) {
-  if (e.which === 13) {
+  $(".new-task2").on("keyup", function (e) {
+    console.log('Hey I ran');
+    if (e.which === 13) {
 
-    var newCheck = $(this).val();
+      var newCheck = $(this).val();
 
-    console.log("new check" + newCheck);
+      console.log("new check" + newCheck);
 
-    var checkList = [];
-    console.log(checkList);
+      var checkList = [];
+      console.log(checkList);
 
-    checkList.push(newCheck);
-    for (var i = 0; i < checkList.length; i++) {
-      $("#newDocBox").append(
-        "<input type='checkbox' tabindex='0' class='hidden'>",
-        "<label> " + checkList[i], "</label>"
-      )
+      checkList.push(newCheck);
+      for (var i = 0; i < checkList.length; i++) {
+        $("#newResBox").append(
+          "<input type='checkbox' tabindex='0' class='hidden' value='40'>",
+          "<label> " + checkList[i], "</label>"
+        )
+      }
+      $(".new-task2").val(' ');
+      taskAmount ++;
+      progressBar();
     }
-    $(".new-task3").val(' ');
-  }
-});
+  })
 
-$('.ui.checkbox').on('click', function () {
-  var valeur = 0;
+  $(".new-task3").on("keyup", function (e) {
+    console.log('Hey I ran');
+    if (e.which === 13) {
 
-  $('input:checked').each(function () {
-    if ($(this).attr('value') > valeur) {
-      valeur = $(this).attr('value');
+      var newCheck = $(this).val();
 
-      console.log(valeur);
+      console.log("new check" + newCheck);
+
+      var checkList = [];
+      console.log(checkList);
+
+      checkList.push(newCheck);
+      for (var i = 0; i < checkList.length; i++) {
+        $("#newDocBox").append(
+          "<input type='checkbox' tabindex='0' class='hidden'>",
+          "<label> " + checkList[i], "</label>"
+        )
+      }
+      $(".new-task3").val(' ');
+      taskAmount ++;
+      progressBar();
     }
   });
-  $('.progress-bar').css('width', valeur + '%').attr('aria-valuenow', valeur);
-  $(".bar-perc").text(valeur + "%");
+
+  var progressBar = function () {
+    var valeur = 0;
+
+    $('input:checked').each(function () {
+      valeur += Math.floor(100/taskAmount);
+      if(valeur === 99||valeur > 100) {
+        valeur = 100
+      };
+
+      console.log(valeur);
+    });
+
+    $('.progress-bar').css('width', valeur + '%').attr('aria-valuenow', valeur);
+    $(".bar-perc").text(valeur + "%");
+  }
+
+  $('.ui.checkbox').on('click', function(){
+    progressBar();
+  });
 });
