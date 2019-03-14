@@ -13,8 +13,24 @@ router.get('/:userID', function (req, res) {
       userID: req.params.userID
     }
   }).then(function (dbEvents) {
+    var presentation = [];
+    var networking = [];
+    var interview = [];
+    for (var i = 0; i < dbEvents.length; i++) {
+      if (dbEvents[i].dataValues.eventType === 'Presentation') {
+        presentation.push(dbEvents[i]);
+      } else if (dbEvents[i].dataValues.eventType === 'Networking') {
+        networking.push(dbEvents[i]);
+      } else {
+        interview.push(dbEvents[i]);
+      };
+    }
     var hbsObject = {
-      Object: dbEvents
+      Object: dbEvents,
+      presentation: presentation,
+      networking: networking,
+      interview: interview
+
     }
     res.render("index", hbsObject);
   });
@@ -62,8 +78,63 @@ router.post("/api/users", function (req, res) {
   });
 });
 
+router.put('/api/score', function (req, res) {
+  console.log(req.body);
+  db.Events.update({
+    score: req.body.score
+  }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (dbEvents) {
+      res.json(dbEvents);
+    });
+});
+
+router.put("/api/tasks", function (req, res) {
+  db.Tasks.update({
+    status: req.body.status
+  }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (data) {
+      res.json(data);
+    })
+});
+
+// Delete an example by id
+router.delete("/api/examples/:id", function (req, res) {
+  db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
+    res.json(dbExample);
+  });
+});
+
+router.post('/api/tasks/new', function (req, res) {
+  db.Tasks.create({
+    task: req.body.task,
+    EventId: req.body.eventID
+  }, {
+    include: [db.Events]
+  }).then(function (dbTasks) {
+    console.log(dbTasks);
+      res.json(dbTasks);
+    })
+});
+
+router.get('/api/tasks/:eventID', function(req, res){
+  db.Tasks.findAll({
+    where: {
+      EventId: req.params.eventID
+    }
+  }).then(function(dbTasks){
+    res.json(dbTasks.length);
+  });
+})
+
 router.post("/api/new/event", function (req, res) {
-  console.log("userID: "+req.body.userID);
+  console.log("userID: " + req.body.userID);
+
   db.Events.create({
     eventName: req.body.eventName,
     eventDate: req.body.eventDate,

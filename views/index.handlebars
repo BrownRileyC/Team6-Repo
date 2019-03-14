@@ -39,15 +39,15 @@
             <button type="button" class="ui inverted secondary button" id="signupBtn">Sign up</button>
         </a>
 
-        
-        
+
+
 
     </nav>
 
     <div>
         <h1 class="text-center">You Got This!</h1>
     </div>
-    
+
     <!-- <div class="text-right" id="logged-in">
         Welcome "user" | <a class="navbar-brand" id="logout" href="#">Logout</a>
     </div> -->
@@ -155,14 +155,18 @@
                         <div class="container">
                             <div class="jumbotron mt-4">
                                 {{#each Object}}
-                                    <div class="item">
-                                        <div class="content">
-                                            <a class="header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
-                                            <div class="description">
-                                                {{this.dataValues.eventDate}}
-                                            </div>
+                                {{#unless this.dataValues.score}}
+                                <div class="item">
+                                    <div class="content">
+                                        <a class="header"
+                                            href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
+                                        <div class="description">
+                                            {{this.dataValues.eventDate}}
+
                                         </div>
-                                    </div>                                    
+                                    </div>
+                                </div>
+                                {{/unless}}
                                 {{/each}}
                             </div>
                         </div>
@@ -269,28 +273,59 @@
     <!-- Reflection scores -->
     <div class="jumbotron jumbotron-fluid bg-info ">
         <div class="container">
-                <div class="ui horizontal divider">  
-            <h1 class="display-4 text-white">Personal Scores <i class="chart pie icon"></i></h1>
+            <div class="ui horizontal divider">
+                <h1 class="display-4 text-white">Personal Scores <i class="chart pie icon"></i></h1>
             </div>
         </div>
         <div class="ui basic segment">
+            {{!-- 
+            {{#each Object}}
+            {{#unless this.dataValues.score}}
+            <div class="item">
+                <div class="content">
+                    <a class="header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
+                    <div class="description">
+                        {{this.dataValues.eventDate}}
+                    </div>
+                </div>
+            </div>
+            {{/unless}}
+            {{/each}} --}}
             <div class="ui hidden section divider"></div>
             <div class="ui two column very relaxed grid text-center">
                 <div class="column">
-                        <i class="massive chart pie icon text-white"></i>
-                        <h4 class="text-white">Presentation</h4>
-                        <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium neque ab ducimus amet
-                            molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
-                            odit commodi laudantium incidunt corporis? Cumque.</p>
-
+                    <i class="massive chart pie icon text-white"></i>
+                    <h4 class="text-white">Presentations</h4>
+                    <ul>
+                        {{#each presentation}}
+                        {{#if this.dataValues.score}}
+                        <li>
+                            <a class="header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
+                            <div class="description">
+                                <p>This event happened on: {{this.dataValues.eventDate}}</p>
+                                <p>You gave yourself a score of: {{this.dataValues.score}}</p>
+                            </div>
+                        </li>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
                 </div>
                 <div class="column">
-                        <i class="massive chart pie icon text-white"></i>
-                        <h4 class="text-white">Networking</h4>
-                        <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium neque ab ducimus amet
-                            molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
-                            odit commodi laudantium incidunt corporis? Cumque.</p>
-
+                    <i class="massive chart pie icon text-white"></i>
+                    <h4 class="text-white">Networking</h4>
+                    <ul>
+                        {{#each networking}}
+                        {{#if this.dataValues.score}}
+                        <li>
+                            <a class="header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
+                            <div class="description">
+                                <p>This event happened on: {{this.dataValues.eventDate}}</p>
+                                <p>You gave yourself a score of: {{this.dataValues.score}}</p>
+                            </div>
+                        </li>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
                 </div>
             </div>
             <div class="ui hidden vertical divider"></div>
@@ -302,10 +337,19 @@
                 <div class="column">
                     <i class="massive chart pie icon text-white"></i>
                     <h4 class="text-white">Interview</h4>
-                    <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae laudantium neque ab ducimus amet
-                        molestias, tenetur temporibus sequi. Perspiciatis esse voluptatum fugiat magnam necessitatibus
-                        odit commodi laudantium incidunt corporis? Cumque.</p>
-
+                    <ul>
+                        {{#each interview}}
+                        {{#if this.dataValues.score}}
+                        <li>
+                            <a class="header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
+                            <div class="description">
+                                <p>This event happened on: {{this.dataValues.eventDate}}</p>
+                                <p>You gave yourself a score of: {{this.dataValues.score}}</p>
+                            </div>
+                        </li>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
                 </div>
             </div>
         </div>
@@ -320,8 +364,8 @@
     <!-- Modals for different events -->
 
     <!-- presentation -->
-    <div class="add-event-modal modal fade" id="presentation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
+    <div class="add-event-modal modal fade" id="presentation" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -361,8 +405,8 @@
         </div>
     </div>
     <!-- networking -->
-    <div class="add-event-modal modal fade" id="networking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
+    <div class="add-event-modal modal fade" id="networking" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -402,8 +446,8 @@
         </div>
     </div>
     <!-- interview -->
-    <div class="add-event-modal modal fade" id="interview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
+    <div class="add-event-modal modal fade" id="interview" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
