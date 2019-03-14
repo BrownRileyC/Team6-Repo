@@ -62,8 +62,48 @@ router.post("/api/users", function (req, res) {
   });
 });
 
+router.put('/api/score', function (req, res) {
+  console.log(req.body);
+  db.Events.update({
+    score: req.body.score
+  }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (dbEvents) {
+      res.json(dbEvents);
+    });
+});
+
+router.put("/api/tasks", function (req, res) {
+  db.Tasks.update({
+    status: req.body.status
+  }, {
+      where: {
+        id: req.body.id,
+        EventId: req.body.EventId
+      }
+    }).then(function(data){
+      res.json(data);
+    })
+});
+
+// Delete an example by id
+router.delete("/api/examples/:id", function (req, res) {
+  db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
+    res.json(dbExample);
+  });
+});
+
+router.post('/api/tasks/new', function (req, res) {
+  db.Tasks.create({
+    task: req.body.task,
+    EventId: req.body.EventId
+  })
+})
+
 router.post("/api/new/event", function (req, res) {
-  console.log("userID: "+req.body.userID);
+  console.log("userID: " + req.body.userID);
   db.Events.create({
     eventName: req.body.eventName,
     eventDate: req.body.eventDate,
