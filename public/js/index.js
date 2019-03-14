@@ -1,23 +1,11 @@
 $(document).ready(function () {
-
-  // on click for events data toggles
-  $(".toggle-button").click(function() {
-    $(".toggle-button").removeClass("active");
-    $(this).addClass("active");
-    var dateContext = $(this).attr("data-tab");
-    displayEvents(dateContext);
-  })
-
-  // on click for login button
   $("#loginBtn").click(function () {
     $("#loginModal").modal();
   });
 
-  // on click for signup button
   $("#signupBtn").click(function () {
     $("#signupModal").modal();
   });
-
 
   $("#signup-submit").on("click", function (event) {
     event.preventDefault();
@@ -32,9 +20,8 @@ $(document).ready(function () {
 
     $.post("/api/users", newUser, function (data) {
       localStorage.setItem("userID", data);
-      window.location.href = '/'+localStorage.getItem("userID");
+      window.location.href = '/' + localStorage.getItem("userID");
     });
-
   });
 
   $("#login-submit").on("click", function (event) {
@@ -44,12 +31,16 @@ $(document).ready(function () {
     var userName = $("#username-input").val().trim();
     var password = $("#pw-input").val().trim();
 
-    $.get("/api/users/" + userName + "/" + password, function (data) {
-      localStorage.setItem("userID", data);
-      window.location.href = '/'+localStorage.getItem("userID");
+    $.post("/api/users/login", { userName: userName, password: password }, function (data) {
+      if (data === false) {
+        alert('Username or Password were incorrect, please try again')
+        $("#username-input").val("")
+        $("#pw-input").val("")
+      } else {
+        localStorage.setItem("userID", data);
+        window.location.href = '/' + localStorage.getItem("userID");
+      }
     });
-    // refresh the page
-    location.reload();
   });
 
   $(".ui.animated.teal.button").on("click", function () {
@@ -70,26 +61,18 @@ $(document).ready(function () {
       $.post("/api/new/event", body, function (data) {
         console.log("set the event in local storage")
         localStorage.setItem("eventID", data);
-        window.location.href = '/event/'+localStorage.getItem("eventID");
+        window.location.href = '/event/' + localStorage.getItem("eventID");
         return false;
       })
     }
   });
 
   $("#backToHome").on("click", function () {
-    window.location.href = "./index.html";
-    return false;
+    window.location.href = "/";
   });
 
-  $("#logout").on("click", function() {
+  $("#logout").on("click", function () {
     localStorage.clear();
     location.reload();
   });
-
-  
-
-
-
 });
-
-

@@ -21,4 +21,11 @@ module.exports = function (app) {
       res.json(dbExample);
     });
   });
+
+  app.post('/api/tasks/new', function(req, res) {
+    db.Tasks.create({
+      task: req.body.task,
+      EventId: req.body.EventId
+    })
+  })
 };
