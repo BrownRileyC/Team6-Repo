@@ -1,6 +1,13 @@
 var db = require("../models");
 
 module.exports = function (app) {
+  // create new task 
+  app.post('/api/tasks/new', function(req, res) {
+    db.Tasks.create({
+      task: req.body.task,
+      EventId: req.body.EventId
+    })
+  });
   // Get all examples
   app.put("/api/tasks", function (req, res) {
     db.Tasks.update({
