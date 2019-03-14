@@ -69,16 +69,29 @@
                 </div>
                 {{#each Object}}
                 {{#each Tasks}}
+                {{#if this.dataValues.status}}
+                {{log this.datavalues.status.ID}}
                 {{log this.dataValues.task}}
                 <div class="ui form">
                     <div class="inline field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" tabindex="0" data-id="{{this.dataValues.id}}" class="edit"
+                        <div data-id="{{this.dataValues.id}}" data-status="{{this.dataValues.status}}" class="ui checkbox checked">
+                            <input type="checkbox" tabindex="0" class="edit"
                                 id="hidden" value='10'>
                             <label data-app1=testing class="app1">{{this.dataValues.task}}</label>
                         </div>
                     </div>
                 </div>
+                {{else}}
+                <div class="ui form">
+                    <div class="inline field">
+                        <div data-id="{{this.dataValues.id}}" data-status="{{this.dataValues.status}}" class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="edit"
+                                id="hidden" value='10'>
+                            <label data-app1=testing class="app1">{{this.dataValues.task}}</label>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
                 {{/each}}
                 {{/each}}
                 

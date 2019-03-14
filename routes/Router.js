@@ -91,6 +91,7 @@ router.put('/api/score', function (req, res) {
 });
 
 router.put("/api/tasks", function (req, res) {
+  console.log(req.body);
   db.Tasks.update({
     status: req.body.status
   }, {
