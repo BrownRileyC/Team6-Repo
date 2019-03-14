@@ -119,6 +119,16 @@ router.post('/api/tasks/new', function (req, res) {
     console.log(dbTasks);
       res.json(dbTasks);
     })
+});
+
+router.get('/api/tasks/:eventID', function(req, res){
+  db.Tasks.findAll({
+    where: {
+      EventId: req.params.eventID
+    }
+  }).then(function(dbTasks){
+    res.json(dbTasks.length);
+  });
 })
 
 router.post("/api/new/event", function (req, res) {

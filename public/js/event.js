@@ -1,6 +1,10 @@
 $(document).ready(function () {
   localStorage.setItem('eventID', window.location.href.slice(window.location.href.lastIndexOf('/') + 1));
-  var taskAmount = 9;
+  var taskCount = 0;
+  $.get('/api/tasks/' + localStorage.getItem('eventID'), function (data) {
+    taskCount = parseInt(data);
+    console.log(taskCount);
+  })
 
   $("#backToHome").on("click", function () {
     window.location.href = "/" + localStorage.getItem('userID');
@@ -59,6 +63,7 @@ $(document).ready(function () {
   test();
 
   function addTask(newTask) {
+    console.log('I started');
     $.ajax({
       method: "POST",
       url: "/api/tasks/new",
@@ -66,9 +71,8 @@ $(document).ready(function () {
         task: newTask,
         eventID: localStorage.getItem('eventID')
       }
-    }).done(function (data) {
-      taskAmount ++;
-      progressBar();
+    }).done(function(){
+      location.reload();
       console.log(data);
     })
   };
@@ -79,20 +83,6 @@ $(document).ready(function () {
 
       var newCheck = $(this).val();
 
-      console.log("new check" + newCheck);
-
-      var checkList = [];
-      console.log(checkList);
-
-      checkList.push(newCheck);
-      for (var i = 0; i < checkList.length; i++) {
-        $("#newAppBox").append(
-          "<input type='checkbox' tabindex='0' class='hidden' value='40'> ",
-          "<label> " + checkList[i], "</label>"
-        )
-      }
-      $(".new-task1").val(' ');
-      
       addTask(newCheck);
     }
   })
@@ -103,19 +93,6 @@ $(document).ready(function () {
 
       var newCheck = $(this).val();
 
-      console.log("new check" + newCheck);
-
-      var checkList = [];
-      console.log(checkList);
-
-      checkList.push(newCheck);
-      for (var i = 0; i < checkList.length; i++) {
-        $("#newResBox").append(
-          "<input type='checkbox' tabindex='0' class='hidden' value='40'>",
-          "<label> " + checkList[i], "</label>"
-        )
-      }
-      $(".new-task2").val(' ');
       addTask(newCheck);
     }
   })
@@ -126,19 +103,6 @@ $(document).ready(function () {
 
       var newCheck = $(this).val();
 
-      console.log("new check" + newCheck);
-
-      var checkList = [];
-      console.log(checkList);
-
-      checkList.push(newCheck);
-      for (var i = 0; i < checkList.length; i++) {
-        $("#newDocBox").append(
-          "<input type='checkbox' tabindex='0' class='hidden'>",
-          "<label> " + checkList[i], "</label>"
-        )
-      }
-      $(".new-task3").val(' ');
       addTask(newCheck);
     }
   });
@@ -147,19 +111,20 @@ $(document).ready(function () {
     var valeur = 0;
 
     $('input:checked').each(function () {
-      valeur += Math.floor(100/taskAmount);
-      if(valeur === 99||valeur > 100) {
-        valeur = 100
-      };
 
-      console.log(valeur);
+      valeur += Math.floor(100 / taskCount);
+      console.log("progress: " + valeur);
+
+      if (100 - valeur < Math.floor(100 / taskCount)) {
+        valeur = 100
+      }
     });
 
     $('.progress-bar').css('width', valeur + '%').attr('aria-valuenow', valeur);
     $(".bar-perc").text(valeur + "%");
   }
 
-  $('.ui.checkbox').on('click', function(){
+  $('.ui.checkbox').on('click', function () {
     progressBar();
   });
 });
