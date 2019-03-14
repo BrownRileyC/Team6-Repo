@@ -277,23 +277,88 @@
             </div>
         </div>
         <div class="ui basic segment">
-
+            {{!-- 
             {{#each Object}}
-            {{#if this.dataValues.score}}
+            {{#unless this.dataValues.score}}
             <div class="item">
                 <div class="content">
                     <a class="header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
                     <div class="description">
-                        <p>This event happened on: {{this.dataValues.eventDate}}</p>
-                        <p>You gave yourself a score of: {{this.dataValues.score}}</p>
+                        {{this.dataValues.eventDate}}
                     </div>
                 </div>
             </div>
-            {{/if}}
-            {{/each}}
+            {{/unless}}
+            {{/each}} --}}
+            <div class="ui hidden section divider"></div>
+            <div class="ui two column very relaxed grid text-center">
+                <div class="column">
+                    <i class="massive chart pie icon text-white"></i>
+                    <h4 class="text-white">Presentations</h4>
+                    <ul>
+                        {{#each presentation}}
+                        {{#if this.dataValues.score}}
+                        <li>
+                            <a class="header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
+                            <div class="description">
+                                <p>This event happened on: {{this.dataValues.eventDate}}</p>
+                                <p>You gave yourself a score of: {{this.dataValues.score}}</p>
+                            </div>
+                        </li>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="column">
+                    <i class="massive chart pie icon text-white"></i>
+                    <h4 class="text-white">Networking</h4>
+                    <ul>
+                        {{#each networking}}
+                        {{#if this.dataValues.score}}
+                        <li>
+                            <a class="header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
+                            <div class="description">
+                                <p>This event happened on: {{this.dataValues.eventDate}}</p>
+                                <p>You gave yourself a score of: {{this.dataValues.score}}</p>
+                            </div>
+                        </li>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <div class="ui hidden vertical divider"></div>
+        </div>
+        <div class="ui basic segment">
+            <div class="ui hidden section divider"></div>
+
+            <div class="ui column very relaxed grid text-center">
+                <div class="column">
+                    <i class="massive chart pie icon text-white"></i>
+                    <h4 class="text-white">Interview</h4>
+                    <ul>
+                        {{#each interview}}
+                        {{#if this.dataValues.score}}
+                        <li>
+                            <a class="header" href="/event/{{this.dataValues.id}}">{{this.dataValues.eventName}}</a>
+                            <div class="description">
+                                <p>This event happened on: {{this.dataValues.eventDate}}</p>
+                                <p>You gave yourself a score of: {{this.dataValues.score}}</p>
+                            </div>
+                        </li>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
         </div>
 
     </div>
+
+
+    </div>
+
+
 
     <!-- Modals for different events -->
 

@@ -58,6 +58,21 @@ $(document).ready(function () {
   }
   test();
 
+  function addTask(newTask) {
+    $.ajax({
+      method: "POST",
+      url: "/api/tasks/new",
+      data: {
+        task: newTask,
+        eventID: localStorage.getItem('eventID')
+      }
+    }).done(function (data) {
+      taskAmount ++;
+      progressBar();
+      console.log(data);
+    })
+  };
+
   $(".new-task1").on("keyup", function (e) {
     console.log('Hey I ran');
     if (e.which === 13) {
@@ -77,8 +92,8 @@ $(document).ready(function () {
         )
       }
       $(".new-task1").val(' ');
-      taskAmount ++;
-      progressBar();
+      
+      addTask(newCheck);
     }
   })
 
@@ -101,8 +116,7 @@ $(document).ready(function () {
         )
       }
       $(".new-task2").val(' ');
-      taskAmount ++;
-      progressBar();
+      addTask(newCheck);
     }
   })
 
@@ -125,8 +139,7 @@ $(document).ready(function () {
         )
       }
       $(".new-task3").val(' ');
-      taskAmount ++;
-      progressBar();
+      addTask(newCheck);
     }
   });
 

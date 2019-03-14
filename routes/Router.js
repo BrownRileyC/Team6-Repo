@@ -13,8 +13,23 @@ router.get('/:userID', function (req, res) {
       userID: req.params.userID
     }
   }).then(function (dbEvents) {
+    var presentation = [];
+    var networking = [];
+    var interview = [];
+    for (var i = 0; i < dbEvents.length; i++) {
+      if (dbEvents[i].dataValues.eventType === 'Presentation') {
+        presentation.push(dbEvents[i]);
+      } else if (dbEvents[i].dataValues.eventType === 'Networking') {
+        networking.push(dbEvents[i]);
+      } else {
+        interview.push(dbEvents[i]);
+      };
+    }
     var hbsObject = {
-      Object: dbEvents
+      Object: dbEvents,
+      presentation: presentation,
+      networking: networking,
+      interview: interview
     }
     res.render("index", hbsObject);
   });
@@ -80,10 +95,9 @@ router.put("/api/tasks", function (req, res) {
     status: req.body.status
   }, {
       where: {
-        id: req.body.id,
-        EventId: req.body.EventId
+        id: req.body.id
       }
-    }).then(function(data){
+    }).then(function (data) {
       res.json(data);
     })
 });
@@ -98,8 +112,13 @@ router.delete("/api/examples/:id", function (req, res) {
 router.post('/api/tasks/new', function (req, res) {
   db.Tasks.create({
     task: req.body.task,
-    EventId: req.body.EventId
-  })
+    EventId: req.body.eventID
+  }, {
+    include: [db.Events]
+  }).then(function (dbTasks) {
+    console.log(dbTasks);
+      res.json(dbTasks);
+    })
 })
 
 router.post("/api/new/event", function (req, res) {
