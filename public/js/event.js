@@ -6,6 +6,7 @@ $(document).ready(function () {
     console.log(taskCount);
   })
 
+
   $("#backToHome").on("click", function () {
     window.location.href = "/" + localStorage.getItem('userID');
     return false;
@@ -89,9 +90,11 @@ $(document).ready(function () {
 
   $(".new-task2").on("keyup", function (e) {
     console.log('Hey I ran');
+
     if (e.which === 13) {
 
       var newCheck = $(this).val();
+
 
       addTask(newCheck);
     }

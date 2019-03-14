@@ -30,6 +30,7 @@ router.get('/:userID', function (req, res) {
       presentation: presentation,
       networking: networking,
       interview: interview
+
     }
     res.render("index", hbsObject);
   });
@@ -133,6 +134,7 @@ router.get('/api/tasks/:eventID', function(req, res){
 
 router.post("/api/new/event", function (req, res) {
   console.log("userID: " + req.body.userID);
+
   db.Events.create({
     eventName: req.body.eventName,
     eventDate: req.body.eventDate,
