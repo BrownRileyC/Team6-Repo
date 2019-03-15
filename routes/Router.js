@@ -6,6 +6,10 @@ router.get('/', function (req, res) {
   res.render("index");
 });
 
+router.get('/favicon.ico', function(req, res){
+  res.sendStatus(204);
+});
+
 router.get('/:userID', function (req, res) {
   db.Events.findAll({
     include: [db.Tasks],
@@ -43,9 +47,6 @@ router.get('/event/:eventID', function (req, res) {
       id: req.params.eventID
     }
   }).then(function (dbEvents) {
-    console.log(dbEvents);
-
-    console.log(dbEvents[0].Tasks);
     var appearance = [];
     var researching = [];
     var documents = [];
@@ -97,7 +98,6 @@ router.post("/api/users", function (req, res) {
 });
 
 router.put('/api/score', function (req, res) {
-  console.log(req.body);
   db.Events.update({
     score: req.body.score
   }, {
@@ -118,11 +118,9 @@ router.put("/api/tasks", function (req, res) {
       }
     }).then(function (data) {
       res.json(data);
-      console.log(data);
     })
 });
 
-// Delete an example by id
 router.delete("/api/examples/:id", function (req, res) {
   db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
     res.json(dbExample);
@@ -137,7 +135,6 @@ router.post('/api/tasks/new', function (req, res) {
   }, {
     include: [db.Events]
   }).then(function (dbTasks) {
-    console.log(dbTasks);
       res.json(dbTasks);
     })
 });
@@ -153,8 +150,6 @@ router.get('/api/tasks/:eventID', function(req, res){
 })
 
 router.post("/api/new/event", function (req, res) {
-  console.log("userID: " + req.body.userID);
-
   db.Events.create({
     eventName: req.body.eventName,
     eventDate: req.body.eventDate,
