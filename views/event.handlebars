@@ -69,29 +69,16 @@
                 </div>
                 {{#each Object}}
                 {{#each Tasks}}
-                {{#if this.dataValues.status}}
-                {{log this.datavalues.status.ID}}
                 {{log this.dataValues.task}}
                 <div class="ui form">
                     <div class="inline field">
-                        <div data-id="{{this.dataValues.id}}" data-status="{{this.dataValues.status}}" class="ui checkbox checked">
-                            <input type="checkbox" tabindex="0" class="edit"
+                        <div class="ui checkbox" data-id="{{this.dataValues.id}}">
+                            <input type="checkbox" {{#if this.dataValues.status}}checked=""{{/if}} tabindex="0" data-id="{{this.dataValues.id}}" class="edit"
                                 id="hidden" value='10'>
                             <label data-app1=testing class="app1">{{this.dataValues.task}}</label>
                         </div>
                     </div>
                 </div>
-                {{else}}
-                <div class="ui form">
-                    <div class="inline field">
-                        <div data-id="{{this.dataValues.id}}" data-status="{{this.dataValues.status}}" class="ui checkbox">
-                            <input type="checkbox" tabindex="0" class="edit"
-                                id="hidden" value='10'>
-                            <label data-app1=testing class="app1">{{this.dataValues.task}}</label>
-                        </div>
-                    </div>
-                </div>
-                {{/if}}
                 {{/each}}
                 {{/each}}
                 
@@ -213,7 +200,35 @@
                             <h3 class="bar-perc"></h3>
 
                         </div>
+<<<<<<< HEAD
                     </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="middle aligned column">
+                    {{#each Object}}
+                    {{log this.dataValues.score}}
+                    {{#unless dataValues.score}}
+
+                    <ol class="ui list">
+                        <li>Signing Up</li>
+                        <li>User Benefits</li>
+                        <li>User Types
+                        </li>
+                        <li>Deleting Your Account</li>
+                    </ol>
+                    <div class="ui teal labeled icon button" id="surveyBtn" tableindex="0">
+                        Reflection
+                        <i class="edit outline icon"></i>
+                    </div>
+                    {{else}}
+                    <div>
+                        <p>You gave yourself a score of: {{dataValues.score}}</p>
+=======
+>>>>>>> 18b89e941f19b6e249ffc1c1cf3d350dc638be21
+                    </div>
+                    {{/unless}}
+                    {{/each}}
                 </div>
             </div>
             <div class="column">
