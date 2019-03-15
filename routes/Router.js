@@ -100,6 +100,7 @@ router.put("/api/tasks", function (req, res) {
       }
     }).then(function (data) {
       res.json(data);
+      console.log(data);
     })
 });
 
