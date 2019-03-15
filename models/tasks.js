@@ -4,7 +4,8 @@ module.exports = function (sequelize, DataTypes) {
         status: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
-        }
+        },
+        type: DataTypes.STRING
     },
     {
         // This is just here to make testing easier, the real database will need to have the createdat and updated at fields if we want them

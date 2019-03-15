@@ -67,21 +67,19 @@
                     <input type="text" class="new-task1" placeholder="Add task here..">
                     <i class="add icon"></i>
                 </div>
-                {{#each Object}}
-                {{#each Tasks}}
+                {{#each appearance}}
                 {{log this.dataValues.task}}
                 <div class="ui form">
                     <div class="inline field">
                         <div class="ui checkbox" data-id="{{this.dataValues.id}}">
-                            <input type="checkbox" {{#if this.dataValues.status}}checked=""{{/if}} tabindex="0" data-id="{{this.dataValues.id}}" class="edit"
-                                id="hidden" value='10'>
+                            <input type="checkbox" {{#if this.dataValues.status}}checked="" {{/if}} tabindex="0"
+                                data-id="{{this.dataValues.id}}" class="edit" id="hidden" value='10'>
                             <label data-app1=testing class="app1">{{this.dataValues.task}}</label>
                         </div>
                     </div>
                 </div>
                 {{/each}}
-                {{/each}}
-                
+
 
 
             </div>
@@ -95,38 +93,18 @@
                     <input type="text" class="new-task2" placeholder="Add task here..">
                     <i class="add icon"></i>
                 </div>
-
+                {{#each researching}}
+                {{log this.dataValues.task}}
                 <div class="ui form">
                     <div class="inline field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" tabindex="0" class="hidden" value='40'>
-                            <label data-name="testing" class="res1">Checkbox</label>
+                        <div class="ui checkbox" data-id="{{this.dataValues.id}}">
+                            <input type="checkbox" {{#if this.dataValues.status}}checked="" {{/if}} tabindex="0"
+                                data-id="{{this.dataValues.id}}" class="edit" id="hidden" value='10'>
+                            <label data-app1=testing class="app1">{{this.dataValues.task}}</label>
                         </div>
                     </div>
                 </div>
-                <div class="ui form">
-                    <div class="inline field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" tabindex="0" class="hidden" value='50'>
-                            <label data-name="testing" class="res2">Checkbox</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui form">
-                    <div class="inline field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" tabindex="0" class="hidden" value='60'>
-                            <label data-name="testing" class="res3">Checkbox</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui form">
-                    <div class="inline field">
-                        <div id="newResBox" class="ui checkbox">
-
-                        </div>
-                    </div>
-                </div>
+                {{/each}}
 
 
 
@@ -142,40 +120,18 @@
                     <i class="add icon"></i>
                 </div>
 
+                {{#each documents}}
+                {{log this.dataValues.task}}
                 <div class="ui form">
                     <div class="inline field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" tabindex="0" class="hidden" value='70'>
-                            <label data-name="testing" class="doc1">Checkbox</label>
+                        <div class="ui checkbox" data-id="{{this.dataValues.id}}">
+                            <input type="checkbox" {{#if this.dataValues.status}}checked="" {{/if}} tabindex="0"
+                                data-id="{{this.dataValues.id}}" class="edit" id="hidden" value='10'>
+                            <label data-app1=testing class="app1">{{this.dataValues.task}}</label>
                         </div>
                     </div>
                 </div>
-
-                <div class="ui form">
-                    <div class="inline field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" tabindex="0" class="hidden" value='80'>
-                            <label data-name="testing" class="doc2">Checkbox</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ui form">
-                    <div class="inline field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" tabindex="0" class="hidden" value='90'>
-                            <label data-name="testing" class="doc3">Checkbox</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui form">
-                    <div class="inline field">
-                        <div id="newDocBox" class="ui checkbox">
-
-                        </div>
-                    </div>
-                </div>
-
+                {{/each}}
 
             </div>
         </div>
@@ -234,7 +190,7 @@
         </div>
     </div>
 
-<div class="modal fade" id="surveyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    <div class="modal fade" id="surveyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

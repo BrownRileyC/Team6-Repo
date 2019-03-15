@@ -43,8 +43,26 @@ router.get('/event/:eventID', function (req, res) {
       id: req.params.eventID
     }
   }).then(function (dbEvents) {
+    console.log(dbEvents);
+
+    console.log(dbEvents[0].Tasks);
+    var appearance = [];
+    var researching = [];
+    var documents = [];
+    for (var i = 0; i < dbEvents[0].Tasks.length; i++) {
+      if (dbEvents[0].Tasks[i].dataValues.type === 'Appearance') {
+        appearance.push(dbEvents[0].Tasks[i]);
+      } else if (dbEvents[0].Tasks[i].dataValues.type === 'Researching') {
+        researching.push(dbEvents[0].Tasks[i]);
+      } else {
+        documents.push(dbEvents[0].Tasks[i]);
+      };
+    }
     var hbsObject = {
-      Object: dbEvents
+      Object: dbEvents,
+      appearance: appearance,
+      researching: researching,
+      documents: documents
     }
     res.render("event", hbsObject);
   });
@@ -114,6 +132,7 @@ router.delete("/api/examples/:id", function (req, res) {
 router.post('/api/tasks/new', function (req, res) {
   db.Tasks.create({
     task: req.body.task,
+    type: req.body.type,
     EventId: req.body.eventID
   }, {
     include: [db.Events]
@@ -148,25 +167,34 @@ router.post("/api/new/event", function (req, res) {
     }).then(function (dbEvents) {
       if (req.body.eventType === "Interview") {
         db.Tasks.bulkCreate([
-          { task: "First Interview Task", EventId: dbEvents.dataValues.id },
-          { task: "Second Interview Task", EventId: dbEvents.dataValues.id },
-          { task: "Third Interview Task", EventId: dbEvents.dataValues.id }
+          { task: "First Interview Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "Second Interview Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "First Interview Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "Second Interview Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "First Interview Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' },
+          { task: "Second Interview Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' }
         ]).then(function (dbTasks) {
           res.json(dbEvents.dataValues.id);
         });
       } else if (req.body.eventType === "Networking") {
         db.Tasks.bulkCreate([
-          { task: "First Networking Task", EventId: dbEvents.dataValues.id },
-          { task: "Second Networking Task", EventId: dbEvents.dataValues.id },
-          { task: "Third Networking Task", EventId: dbEvents.dataValues.id }
+          { task: "First Networking Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "Second Networking Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "First Networking Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "Second Networking Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "First Networking Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' },
+          { task: "Second Networking Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' }
         ]).then(function (dbTasks) {
           res.json(dbEvents.dataValues.id);
         });
       } else {
         db.Tasks.bulkCreate([
-          { task: "First Presentation Task", EventId: dbEvents.dataValues.id },
-          { task: "Second Presentation Task", EventId: dbEvents.dataValues.id },
-          { task: "Third Presentation Task", EventId: dbEvents.dataValues.id }
+          { task: "First Presentation Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "Second Presentation Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "First Presentation Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "Second Presentation Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "First Presentation Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' },
+          { task: "Second Presentation Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' }
         ]).then(function (dbTasks) {
           res.json(dbEvents.dataValues.id);
         });
