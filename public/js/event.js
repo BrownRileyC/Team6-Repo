@@ -127,7 +127,35 @@ $(document).ready(function () {
     $(".bar-perc").text(valeur + "%");
   }
 
-  $('.ui.checkbox').on('click', function () {
-    progressBar();
+  $('.ui.checkbox').checkbox({
+    onChecked: function() {
+        progressBar();
+        console.log("checked it");
+        $.ajax({
+            method: "PUT",
+            url: "/api/tasks",
+            data: {
+              id: $(this).attr("data-id"),
+              status: '1',
+            }
+        }).done(function (data) {
+              console.log(data);
+            })
+    },
+    onUnchecked: function() {
+        progressBar();
+        console.log('Unchecked');
+        $.ajax({
+            method: "PUT",
+            url: "/api/tasks",
+            data: {
+              id: $(this).attr("data-id"),
+              status: '0',
+            }
+        }).done(function (data) {
+              console.log(data);
+            })
+    }
   });
+  
 });
