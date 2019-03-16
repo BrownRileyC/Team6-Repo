@@ -164,14 +164,6 @@
                     {{#each Object}}
                     {{log this.dataValues.score}}
                     {{#unless dataValues.score}}
-
-                    <ol class="ui list">
-                        <li>Signing Up</li>
-                        <li>User Benefits</li>
-                        <li>User Types
-                        </li>
-                        <li>Deleting Your Account</li>
-                    </ol>
                     <div class="ui teal labeled icon button" id="surveyBtn" tableindex="0">
                         Reflection
                         <i class="edit outline icon"></i>
@@ -247,14 +239,14 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="surveyQuestion5">Another question I cannot think of right now</label>
+                            <label for="surveyQuestion5">Do you have regrets about your actions during the event?</label>
                             <select class="form-control" id="surveyQuestion5">
                                 <option></option>
-                                <option>1 (Completely unprepared)</option>
+                                <option>1 (I regret a lot)</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
-                                <option>5 (I could go again right now)</option>
+                                <option>5 (All good)</option>
                             </select>
                         </div>
                     </form>
@@ -262,7 +254,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
                     <div id="survey-submit" class="ui vertical animated button" tabindex="0">
-                        <div class="hidden content">Login in</a></div>
+                        <div class="hidden content">Submit</a></div>
                         <div class="visible content">
                             <i class="thumbs up outline icon"></i>
                         </div>
