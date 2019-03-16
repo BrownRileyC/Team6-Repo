@@ -162,34 +162,34 @@ router.post("/api/new/event", function (req, res) {
     }).then(function (dbEvents) {
       if (req.body.eventType === "Interview") {
         db.Tasks.bulkCreate([
-          { task: "First Interview Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
-          { task: "Second Interview Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
-          { task: "First Interview Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
-          { task: "Second Interview Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
-          { task: "First Interview Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' },
-          { task: "Second Interview Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' }
+          { task: "Do some searching on the company and the position you are interviewing for.  Try to understand the company's mission and see if there is any recent news about them.", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "Every interview will have a time at the end for any questions you might have.  Find some!  If you liked you can bring a list of questions with you, but make sure its not info you can find right on the About Us section of their website.", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "Have your resume up to date.  Read over it to make sure it is accurate and possibly rework it to make sure you are highlighting the most relevant sections for this job.", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "Go back and look at the job posting.  See what parts you meet and if there are any requirements you do not.  Think about how you will go over those parts during your interview.", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "Shower or bath the morning of your interview, wear deoderant, and brush your teeth.  You should look clean and neat.", EventId: dbEvents.dataValues.id, type: 'Appearance' },
+          { task: "Dress in a manner appropriate to the position you are applying for.  If you are unsure, dressing conservatively, like a dark colored suit, is a safe bet.", EventId: dbEvents.dataValues.id, type: 'Appearance' }
         ]).then(function (dbTasks) {
           res.json(dbEvents.dataValues.id);
         });
       } else if (req.body.eventType === "Networking") {
         db.Tasks.bulkCreate([
-          { task: "First Networking Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
-          { task: "Second Networking Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
-          { task: "First Networking Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
-          { task: "Second Networking Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
-          { task: "First Networking Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' },
-          { task: "Second Networking Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' }
+          { task: "See if you can find a list of the companies attending the event.  If you can try to find a few companies you absolutely would like to contact and do some research on them.", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "Have a clear goal in mind before you go.  You might simply want to listen and hear what skills companies are looking for or be on the hunt for one specific job.  ", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "Get business cards if you can.  Then make sure to bring more than you think you will need.  It can't hurt to hand them out.", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "You are going to hear a lot of stuff if you visit several companies.  It's going to be hard to remember it all, so bring something so you can take notes.  That way if someone follows up you can know for sure who they are and what they are about.", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "Shower or bath the morning of the event, wear deoderant, and brush your teeth.  You should look clean and neat.", EventId: dbEvents.dataValues.id, type: 'Appearance' },
+          { task: "Dress in something comfortable, but professional.  You might have a lot of moving about as you go about the event and you wouldn't want your outfit to make you more uncomfortable.", EventId: dbEvents.dataValues.id, type: 'Appearance' }
         ]).then(function (dbTasks) {
           res.json(dbEvents.dataValues.id);
         });
       } else {
         db.Tasks.bulkCreate([
-          { task: "First Presentation Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
-          { task: "Second Presentation Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
-          { task: "First Presentation Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
-          { task: "Second Presentation Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
-          { task: "First Presentation Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' },
-          { task: "Second Presentation Appearance Task", EventId: dbEvents.dataValues.id, type: 'Appearance' }
+          { task: "Make sure your presentation is complete!", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "Know your slides very well, you shouldn't be reading off the slides as you present.", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "If you feel nervous about presenting from memory you can make note cards to list your main points to ensure you hit them all.", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "Make sure you have your references at the end of your presentation, there are several sites to help you format a bibliography.", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "Shower or bath the morning of your presentation, wear deoderant, and brush your teeth.  You should look clean and neat.", EventId: dbEvents.dataValues.id, type: 'Appearance' },
+          { task: "Think about the scale of your presentation. A small presentation, like a class project, means you should be well groomed.  A business meeting, on the otherhand, calls for more care, you should be dressed professionaly.", EventId: dbEvents.dataValues.id, type: 'Appearance' }
         ]).then(function (dbTasks) {
           res.json(dbEvents.dataValues.id);
         });
