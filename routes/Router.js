@@ -184,10 +184,10 @@ router.post("/api/new/event", function (req, res) {
         });
       } else {
         db.Tasks.bulkCreate([
-          { task: "First Presentation Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
-          { task: "Second Presentation Researching Task", EventId: dbEvents.dataValues.id, type: 'Researching' },
-          { task: "First Presentation Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
-          { task: "Second Presentation Documents Task", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "Make sure your presentation is complete!", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "Know your slides very well, you shouldn't be reading off the slides as you present.", EventId: dbEvents.dataValues.id, type: 'Researching' },
+          { task: "If you feel nervous about presenting from memory you can make note cards to list your main points to ensure you hit them all.", EventId: dbEvents.dataValues.id, type: 'Documents' },
+          { task: "Make sure you have your references at the end of your presentation, there are several sites to help you format a bibliography.", EventId: dbEvents.dataValues.id, type: 'Documents' },
           { task: "Shower or bath the morning of your presentation, wear deoderant, and brush your teeth.  You should look clean and neat.", EventId: dbEvents.dataValues.id, type: 'Appearance' },
           { task: "Think about the scale of your presentation. A small presentation, like a class project, means you should be well groomed.  A business meeting, on the otherhand, calls for more care, you should be dressed professionaly.", EventId: dbEvents.dataValues.id, type: 'Appearance' }
         ]).then(function (dbTasks) {
