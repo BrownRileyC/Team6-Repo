@@ -24,5 +24,6 @@ CREATE TABLE tasks (
     id INTEGER auto_Increment primary key,
     task VARCHAR(255) not null,
     status BOOLEAN DEFAULT false,
+    type VARCHAR(255),
     eventID INT(10)
 )

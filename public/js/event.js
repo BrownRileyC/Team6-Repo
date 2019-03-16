@@ -1,11 +1,29 @@
 $(document).ready(function () {
   localStorage.setItem('eventID', window.location.href.slice(window.location.href.lastIndexOf('/') + 1));
   var taskCount = 0;
+
+  var progressBar = function () {
+    var valeur = 0;
+
+    $('input:checked').each(function () {
+
+      valeur += Math.floor(100 / taskCount);
+      console.log("progress: " + valeur);
+
+      if (100 - valeur < Math.floor(100 / taskCount)) {
+        valeur = 100
+      }
+    });
+
+    $('.progress-bar').css('width', valeur + '%').attr('aria-valuenow', valeur);
+    $(".bar-perc").text(valeur + "%");
+  }
+
   $.get('/api/tasks/' + localStorage.getItem('eventID'), function (data) {
     taskCount = parseInt(data);
     console.log(taskCount);
+    progressBar();
   })
-
 
   $("#backToHome").on("click", function () {
     window.location.href = "/" + localStorage.getItem('userID');
@@ -69,10 +87,11 @@ $(document).ready(function () {
       method: "POST",
       url: "/api/tasks/new",
       data: {
-        task: newTask,
+        task: newTask.newTask,
+        type: newTask.taskType,
         eventID: localStorage.getItem('eventID')
       }
-    }).done(function(){
+    }).done(function () {
       location.reload();
       console.log(data);
     })
@@ -82,7 +101,10 @@ $(document).ready(function () {
     console.log('Hey I ran');
     if (e.which === 13) {
 
-      var newCheck = $(this).val();
+      var newCheck = {
+        newTask: $(this).val(),
+        taskType: 'Appearance'
+      };
 
       addTask(newCheck);
     }
@@ -93,8 +115,10 @@ $(document).ready(function () {
 
     if (e.which === 13) {
 
-      var newCheck = $(this).val();
-
+      var newCheck = {
+        newTask: $(this).val(),
+        taskType: 'Researching'
+      };
 
       addTask(newCheck);
     }
@@ -104,58 +128,43 @@ $(document).ready(function () {
     console.log('Hey I ran');
     if (e.which === 13) {
 
-      var newCheck = $(this).val();
+      var newCheck = {
+        newTask: $(this).val(),
+        taskType: 'Documents'
+      };
 
       addTask(newCheck);
     }
   });
 
-  var progressBar = function () {
-    var valeur = 0;
-
-    $('input:checked').each(function () {
-
-      valeur += Math.floor(100 / taskCount);
-      console.log("progress: " + valeur);
-
-      if (100 - valeur < Math.floor(100 / taskCount)) {
-        valeur = 100
-      }
-    });
-
-    $('.progress-bar').css('width', valeur + '%').attr('aria-valuenow', valeur);
-    $(".bar-perc").text(valeur + "%");
-  }
-
   $('.ui.checkbox').checkbox({
-    onChecked: function() {
-        progressBar();
-        console.log("checked it");
-        $.ajax({
-            method: "PUT",
-            url: "/api/tasks",
-            data: {
-              id: $(this).attr("data-id"),
-              status: '1',
-            }
-        }).done(function (data) {
-              console.log(data);
-            })
+    onChecked: function () {
+      progressBar();
+      console.log("checked it");
+      $.ajax({
+        method: "PUT",
+        url: "/api/tasks",
+        data: {
+          id: $(this).attr("data-id"),
+          status: '1',
+        }
+      }).done(function (data) {
+        console.log(data);
+      })
     },
-    onUnchecked: function() {
-        progressBar();
-        console.log('Unchecked');
-        $.ajax({
-            method: "PUT",
-            url: "/api/tasks",
-            data: {
-              id: $(this).attr("data-id"),
-              status: '0',
-            }
-        }).done(function (data) {
-              console.log(data);
-            })
+    onUnchecked: function () {
+      progressBar();
+      console.log('Unchecked');
+      $.ajax({
+        method: "PUT",
+        url: "/api/tasks",
+        data: {
+          id: $(this).attr("data-id"),
+          status: '0',
+        }
+      }).done(function (data) {
+        console.log(data);
+      })
     }
   });
-  
 });
